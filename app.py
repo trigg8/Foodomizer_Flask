@@ -523,20 +523,257 @@ def ingredient_delete(key):
 
     return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, sorted_available_recipes = sorted_available_recipes, Your_meal = Your_meal)
 
-@app.route("/ingredient_update/<key>", methods = ["GET", "POST"])
-def ingredient_update(key):
-    if key in ingredients.keys():
-        name = key
-    else:
-        pass
-    num = request.form["ingredients_amount"]
-    ingredients[name] = num
-    sorted_ingredients = dict(sorted(ingredients.items()))
+@app.route("/recipe_details/<recipe>", methods=["GET"])
+def recipe_details(recipe):
+    print("This is the recipe ", recipe)
+    print(type(recipe))
+    print(type(recipe_list[0]))
+    
+    temp_list = list(map(str, recipe_list))
+    try:
+        if recipe in temp_list:
+            index = temp_list.index(recipe)
+    except:
+        print("Fuck Me")
+    print(temp_list)
+    print(type(temp_list[0]))
+    print("Index = ", index)
 
-    print(ingredients)
-    print(sorted_ingredients)
+    print("The type of recipe_list[index] is ", type(recipe_list[index]))
+    print(Recipe_3)
+    recipe_name = recipe_list[index]
+    if type(recipe_list[index]) == Recipe_1:
+        ing1 = recipe_list[index].ing1
+        ing2 = ""
+        ing3 = ""
+        ing4 = ""
+        ing5 = ""
+        ing6 = ""
+        ing7 = ""
+        ing8 = ""
+        ing9 = ""
+        ing10 = ""
 
-    return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, sorted_available_recipes = sorted_available_recipes, Your_meal = Your_meal)
+        ni1 = recipe_list[index].ni1
+        ni2 = ""
+        ni3 = ""
+        ni4 = ""
+        ni5 = ""
+        ni6 = ""
+        ni7 = ""
+        ni8 = ""
+        ni9 = ""
+        ni10 = ""
+    
+    elif type(recipe_list[index]) == Recipe_2:
+        ing1 = recipe_list[index].ing1
+        ing2 = recipe_list[index].ing2
+        ing3 = ""
+        ing4 = ""
+        ing5 = ""
+        ing6 = ""
+        ing7 = ""
+        ing8 = ""
+        ing9 = ""
+        ing10 = ""
+
+        ni1 = recipe_list[index].ni1
+        ni2 = recipe_list[index].ni2
+        ni3 = ""
+        ni4 = ""
+        ni5 = ""
+        ni6 = ""
+        ni7 = ""
+        ni8 = ""
+        ni9 = ""
+        ni10 = ""
+
+    elif type(recipe_list[index]) == Recipe_3:
+        ing1 = recipe_list[index].ing1
+        ing2 = recipe_list[index].ing2
+        ing3 = recipe_list[index].ing3
+        ing4 = ""
+        ing5 = ""
+        ing6 = ""
+        ing7 = ""
+        ing8 = ""
+        ing9 = ""
+        ing10 = ""
+
+        ni1 = recipe_list[index].ni1
+        ni2 = recipe_list[index].ni2
+        ni3 = recipe_list[index].ni3
+        ni4 = ""
+        ni5 = ""
+        ni6 = ""
+        ni7 = ""
+        ni8 = ""
+        ni9 = ""
+        ni10 = ""
+
+    elif type(recipe_list[index]) == Recipe_4:
+        ing1 = recipe_list[index].ing1
+        ing2 = recipe_list[index].ing2
+        ing3 = recipe_list[index].ing3
+        ing4 = recipe_list[index].ing4
+        ing5 = ""
+        ing6 = ""
+        ing7 = ""
+        ing8 = ""
+        ing9 = ""
+        ing10 = ""
+
+        ni1 = recipe_list[index].ni1
+        ni2 = recipe_list[index].ni2
+        ni3 = recipe_list[index].ni3
+        ni4 = recipe_list[index].ni4
+        ni5 = ""
+        ni6 = ""
+        ni7 = ""
+        ni8 = ""
+        ni9 = ""
+        ni10 = ""
+
+    elif type(recipe_list[index]) == Recipe_5:
+        ing1 = recipe_list[index].ing1
+        ing2 = recipe_list[index].ing2
+        ing3 = recipe_list[index].ing3
+        ing4 = recipe_list[index].ing4
+        ing5 = recipe_list[index].ing5
+        ing6 = ""
+        ing7 = ""
+        ing8 = ""
+        ing9 = ""
+        ing10 = ""
+
+        ni1 = recipe_list[index].ni1
+        ni2 = recipe_list[index].ni2
+        ni3 = recipe_list[index].ni3
+        ni4 = recipe_list[index].ni4
+        ni5 = recipe_list[index].ni5
+        ni6 = ""
+        ni7 = ""
+        ni8 = ""
+        ni9 = ""
+        ni10 = ""
+
+    elif type(recipe_list[index]) == Recipe_6:
+        ing1 = recipe_list[index].ing1
+        ing2 = recipe_list[index].ing2
+        ing3 = recipe_list[index].ing3
+        ing4 = recipe_list[index].ing4
+        ing5 = recipe_list[index].ing5
+        ing6 = recipe_list[index].ing6
+        ing7 = ""
+        ing8 = ""
+        ing9 = ""
+        ing10 = ""
+
+        ni1 = recipe_list[index].ni1
+        ni2 = recipe_list[index].ni2
+        ni3 = recipe_list[index].ni3
+        ni4 = recipe_list[index].ni4
+        ni5 = recipe_list[index].ni5
+        ni6 = recipe_list[index].ni6
+        ni7 = ""
+        ni8 = ""
+        ni9 = ""
+        ni10 = ""
+
+    elif type(recipe_list[index]) == Recipe_7:
+        ing1 = recipe_list[index].ing1
+        ing2 = recipe_list[index].ing2
+        ing3 = recipe_list[index].ing3
+        ing4 = recipe_list[index].ing4
+        ing5 = recipe_list[index].ing5
+        ing6 = recipe_list[index].ing6
+        ing7 = recipe_list[index].ing7
+        ing8 = ""
+        ing9 = ""
+        ing10 = ""
+
+        ni1 = recipe_list[index].ni1
+        ni2 = recipe_list[index].ni2
+        ni3 = recipe_list[index].ni3
+        ni4 = recipe_list[index].ni4
+        ni5 = recipe_list[index].ni5
+        ni6 = recipe_list[index].ni6
+        ni7 = recipe_list[index].ni7
+        ni8 = ""
+        ni9 = ""
+        ni10 = ""
+
+    elif type(recipe_list[index]) == Recipe_8:
+        ing1 = recipe_list[index].ing1
+        ing2 = recipe_list[index].ing2
+        ing3 = recipe_list[index].ing3
+        ing4 = recipe_list[index].ing4
+        ing5 = recipe_list[index].ing5
+        ing6 = recipe_list[index].ing6
+        ing7 = recipe_list[index].ing7
+        ing8 = recipe_list[index].ing8
+        ing9 = ""
+        ing10 = ""
+
+        ni1 = recipe_list[index].ni1
+        ni2 = recipe_list[index].ni2
+        ni3 = recipe_list[index].ni3
+        ni4 = recipe_list[index].ni4
+        ni5 = recipe_list[index].ni5
+        ni6 = recipe_list[index].ni6
+        ni7 = recipe_list[index].ni7
+        ni8 = recipe_list[index].ni8
+        ni9 = ""
+        ni10 = ""
+
+    elif type(recipe_list[index]) == Recipe_9:
+        ing1 = recipe_list[index].ing1
+        ing2 = recipe_list[index].ing2
+        ing3 = recipe_list[index].ing3
+        ing4 = recipe_list[index].ing4
+        ing5 = recipe_list[index].ing5
+        ing6 = recipe_list[index].ing6
+        ing7 = recipe_list[index].ing7
+        ing8 = recipe_list[index].ing8
+        ing9 = recipe_list[index].ing9
+        ing10 = ""
+
+        ni1 = recipe_list[index].ni1
+        ni2 = recipe_list[index].ni2
+        ni3 = recipe_list[index].ni3
+        ni4 = recipe_list[index].ni4
+        ni5 = recipe_list[index].ni5
+        ni6 = recipe_list[index].ni6
+        ni7 = recipe_list[index].ni7
+        ni8 = recipe_list[index].ni8
+        ni9 = recipe_list[index].ni9
+        ni10 = ""
+
+    elif type(recipe_list[index]) == Recipe_10:
+        ing1 = recipe_list[index].ing1
+        ing2 = recipe_list[index].ing2
+        ing3 = recipe_list[index].ing3
+        ing4 = recipe_list[index].ing4
+        ing5 = recipe_list[index].ing5
+        ing6 = recipe_list[index].ing6
+        ing7 = recipe_list[index].ing7
+        ing8 = recipe_list[index].ing8
+        ing9 = recipe_list[index].ing9
+        ing10 = recipe_list[index].ing10
+
+        ni1 = recipe_list[index].ni1
+        ni2 = recipe_list[index].ni2
+        ni3 = recipe_list[index].ni3
+        ni4 = recipe_list[index].ni4
+        ni5 = recipe_list[index].ni5
+        ni6 = recipe_list[index].ni6
+        ni7 = recipe_list[index].ni7
+        ni8 = recipe_list[index].ni8
+        ni9 = recipe_list[index].ni9
+        ni10 = recipe_list[index].ni10
+
+
+    return render_template("recipe_details.html", recipe_name = recipe_name, ing1 = ing1, ing2 = ing2, ing3 = ing3, ing4 = ing4, ing5 = ing5, ing6 = ing6, ing7 = ing7, ing8 = ing8, ing9 = ing9, ing10 = ing10, ni1 = ni1, ni2 = ni2, ni3 = ni3, ni4 = ni4, ni5 = ni5, ni6 = ni6, ni7 = ni7, ni8 = ni8, ni9 = ni9, ni10 = ni10)
 
 # Start app
 if __name__ == "__main__":

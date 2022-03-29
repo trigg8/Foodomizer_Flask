@@ -56,7 +56,11 @@
             <tbody class="recipes__table__body">
             {% for recipe in recipe_list %}
                 <tr>
-                    <td> {{ recipe }}</td>
+                    <td>
+                        <a href="/recipe_details/{{recipe}}">
+                            {{ recipe }}
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody> <!-- End of recipes__table__body-->
