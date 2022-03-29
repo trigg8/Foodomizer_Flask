@@ -26,15 +26,9 @@
                     <td class="ingredient_value" name="ingredient_value"> {{ value }}</td>
                     <td>
                         <a href="/ingredient_delete/{{key}}">
-                            Delete
+                            X 
                         </a>
                     </td>
-                    <td>
-                        <a href="/ingredient_update/{{key}}">
-                            Update
-                        </a>
-                    </td>
-                    
                 </tr>
             {% endfor %}
             </tbody> <!-- End of ingredients__table__body-->
@@ -44,7 +38,7 @@
             <form action="/ingredient_add" method="POST">
                 <input type="text" name="ingredients_name" class="ingredients_name">
                 <input type="text" name="ingredients_amount" class="ingredients_amount">
-                <input type="submit" value="Add Ingredient">
+                <input type="submit" value="Add/Update Ingredient">
             </form>
         </div> <!-- End of ingredients__form-->
 

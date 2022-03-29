@@ -523,6 +523,20 @@ def ingredient_delete(key):
 
     return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, sorted_available_recipes = sorted_available_recipes, Your_meal = Your_meal)
 
+@app.route("/ingredient_update/<key>", methods = ["GET", "POST"])
+def ingredient_update(key):
+    if key in ingredients.keys():
+        name = key
+    else:
+        pass
+    num = request.form["ingredients_amount"]
+    ingredients[name] = num
+    sorted_ingredients = dict(sorted(ingredients.items()))
+
+    print(ingredients)
+    print(sorted_ingredients)
+
+    return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, sorted_available_recipes = sorted_available_recipes, Your_meal = Your_meal)
 
 # Start app
 if __name__ == "__main__":
