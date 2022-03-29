@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!--Head Information/Meta Data-->
+<head>
+    
+    <!--Standard for machine language to human readable language-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+    <!--Changes the intial window size to match the device size-->
+    <meta name="viewport" content="width=device-width, initial-scale= 1.0">
+
+    <meta name="description" content="Portfolio created by/for Tanner Rigg. Email: tannerrigg@gmail.com">
+	    
+    <meta name="author" content="Tanner Rigg">
+
+    <title>
+        Tanner Rigg's Foodomizer_Flask
+    </title>
+
+    <!--Normalize Bootstrap makes the website look normal on all browsers-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+
+    <!--Font Awesome gives access to link brand logos-->
+    <script src="https://kit.fontawesome.com/a42af84ae6.js" crossorigin="anonymous"></script>
+
+    <!--CSS Style Link-->
+    <link rel="stylesheet" href= "{{ url_for('static', filename='css/main.css') }}">
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    {% block body %}{% endblock %}
+</body>
+</html>
