@@ -1,3 +1,49 @@
+/* Root Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+:root {
+    /*Colors*/
+    --clr-light: #cfcfcf;
+    --clr-dark: #303030;
+    --clr-dark-secondary: #404040;
+    --clr-accent: #76c2a1;
+    --clr-accent-secondary: #e08f80;
+
+    /* Font-size */
+    --fs-h1: 3rem;
+    --fs-h2: 2.25rem;
+    --fs-h3: 1.25rem;
+    --fs-body: 1rem;
+}
+
 body {
-    background-color: red;
+    background-color: var(--clr-light);
+}
+
+.content__container {
+    background-color: var(--clr-dark-secondary);
+    display: flex;
+}
+
+.ingredients__container {
+    background-color: lightskyblue;
+}
+
+.recipes__container {
+    background-color: lightseagreen;
+}
+
+.available__container {
+    background-color: lightsalmon;
+}
+
+.yourmeal__container {
+    background-color: lightgreen;
 }

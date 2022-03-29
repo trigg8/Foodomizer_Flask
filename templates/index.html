@@ -5,5 +5,94 @@
 {% endblock %} 
 
 {% block body %} 
-<h1>Test Connection</h1>
+<h1>Foodomizer</h1>
+<div class="content__container">
+    
+    <!-- Ingredients Container-->
+    <div class="ingredients__container">
+        <h2>Your Ingredients</h2>
+        <table class="ingredients__table">
+            <thead class="ingredients__table__header">
+                <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                </tr>
+            </thead> <!-- End of ingredients__table__header-->
+            <tbody class="ingredients__table__body">
+            {% for key, value in sorted_ingredients.items() %}
+                <tr>
+                    <td> {{ key }}</td>
+                    <td> {{ value }}</td>
+                </tr>
+            {% endfor %}
+            </tbody> <!-- End of ingredients__table__body-->
+        </table> <!-- End of ingredients__table-->
+
+        <div class="ingredients__form">
+            <form action="/ingredient_add" method="POST">
+                <input type="text" name="ingredients_name" class="ingredients_name">
+                <input type="text" name="ingredients_amount" class="ingredients_amount">
+                <input type="submit" value="Add Ingredient">
+            </form>
+        </div> <!-- End of ingredients__form-->
+
+    </div> <!-- End of ingredients__container-->
+
+    <!-- Recipes Container-->
+    <div class="recipes__container">
+        <h2>Your Recipes</h2>
+        <table class="recipes__table">
+            <thead class="recipes__table__header">
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead> <!-- End of recipes__table__header-->
+            <tbody class="recipes__table__body">
+            {% for recipe in recipe_list %}
+                <tr>
+                    <td> {{ recipe }}</td>
+                </tr>
+            {% endfor %}
+            </tbody> <!-- End of recipes__table__body-->
+        </table> <!-- End of recipes__table-->
+    </div> <!-- End of recipes__container-->
+
+    <!-- Available Container-->
+    <div class="available__container">
+        <h2>Available Recipes</h2>
+        <table class="available__table">
+            <thead class="available__table__header">
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead> <!-- End of available__table__header-->
+            <tbody class="available__table__body">
+            {% for recipe in available_recipes %}
+                <tr>
+                    <td> {{ recipe }}</td>
+                </tr>
+            {% endfor %}
+            </tbody> <!-- End of available__table__body-->
+        </table> <!-- End of available__table-->
+    </div> <!-- End of available__container-->
+
+    <!-- Your Meal Container-->
+    <div class="yourmeal__container">
+        <h2>Your Meal</h2>
+        <table class="yourmeal__table">
+            <thead class="yourmeal__table__header">
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead> <!-- End of yourmeal__table__header-->
+            <tbody class="yourmeal__table__body">
+                <tr>
+                    <td> {{ Your_meal }}</td>
+                </tr>
+            </tbody> <!-- End of yourmeal__table__body-->
+        </table> <!-- End of yourmeal__table-->
+    </div> <!-- End of yourmeal__container-->
+
+
+</div> <!-- End of content__container-->
 {% endblock %} 
