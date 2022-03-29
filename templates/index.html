@@ -16,13 +16,25 @@
                 <tr>
                     <th>Name</th>
                     <th>Amount</th>
+                    <th>Action</th>
                 </tr>
             </thead> <!-- End of ingredients__table__header-->
             <tbody class="ingredients__table__body">
             {% for key, value in sorted_ingredients.items() %}
                 <tr>
-                    <td> {{ key }}</td>
-                    <td> {{ value }}</td>
+                    <td class="ingredient_key" name="ingredient_key"> {{ key }}</td>
+                    <td class="ingredient_value" name="ingredient_value"> {{ value }}</td>
+                    <td>
+                        <a href="/ingredient_delete/{{key}}">
+                            Delete
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/ingredient_update/{{key}}">
+                            Update
+                        </a>
+                    </td>
+                    
                 </tr>
             {% endfor %}
             </tbody> <!-- End of ingredients__table__body-->

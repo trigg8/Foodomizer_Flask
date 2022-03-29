@@ -510,7 +510,19 @@ def ingredient_add():
     sorted_ingredients = dict(sorted(ingredients.items()))
     print(ingredients)
     print(sorted_ingredients)
+    
     return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, sorted_available_recipes = sorted_available_recipes, Your_meal = Your_meal)
+
+@app.route("/ingredient_delete/<key>")
+def ingredient_delete(key):
+    ingredients.pop(key)
+    sorted_ingredients = dict(sorted(ingredients.items()))
+
+    print(ingredients)
+    print(sorted_ingredients)
+
+    return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, sorted_available_recipes = sorted_available_recipes, Your_meal = Your_meal)
+
 
 # Start app
 if __name__ == "__main__":
