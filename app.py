@@ -10,7 +10,6 @@ recipe_list = []
 
 available_recipes = []
 
-sorted_available_recipes = list(sorted(available_recipes))
 
 Your_meal = ""
 
@@ -259,7 +258,7 @@ def create_new_Recipe_10(name,ing1,ni1,ing2,ni2,ing3,ni3,ing4,ni4,ing5,ni5,ing6,
 
 
 # Functions
-def check_avialable_recipes(): 
+def check_available_recipes(): 
     global available_recipes
     available_recipes = []
     for rcp in recipe_list: 
@@ -500,7 +499,7 @@ def print_ingredients():
 # Flask routes
 @app.route("/")
 def index():
-    return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, sorted_available_recipes = sorted_available_recipes, Your_meal = Your_meal)
+    return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, available_recipes = available_recipes, Your_meal = Your_meal)
 
 @app.route("/ingredient_add", methods=["POST"])
 def ingredient_add():
@@ -511,7 +510,7 @@ def ingredient_add():
     print(ingredients)
     print(sorted_ingredients)
     
-    return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, sorted_available_recipes = sorted_available_recipes, Your_meal = Your_meal)
+    return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, available_recipes = available_recipes, Your_meal = Your_meal)
 
 @app.route("/ingredient_delete/<key>")
 def ingredient_delete(key):
@@ -521,7 +520,7 @@ def ingredient_delete(key):
     print(ingredients)
     print(sorted_ingredients)
 
-    return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, sorted_available_recipes = sorted_available_recipes, Your_meal = Your_meal)
+    return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, available_recipes = available_recipes, Your_meal = Your_meal)
 
 @app.route("/recipe_details/<recipe>", methods=["GET"])
 def recipe_details(recipe):
@@ -784,15 +783,13 @@ def recipe_delete(recipe):
     try:
         if recipe in temp_list:
             index = temp_list.index(recipe)
+            recipe_list.pop(index)
+            print(recipe_list)
     except:
         print("Fuck Me")
 
-    print(index)
 
-    recipe_list.pop(index)
-    print(recipe_list)
-
-    return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, sorted_available_recipes = sorted_available_recipes, Your_meal = Your_meal)
+    return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, available_recipes = available_recipes, Your_meal = Your_meal)
 
 @app.route("/recipe_create", methods=['POST', 'GET'])
 def recipe_create():
@@ -849,7 +846,9 @@ def recipe_create():
         if selected == "Recipe 1 Ingredient":
             create_new_Recipe_1(name=recipe_name, ing1=ing1_name, ni1=ing1_amount)
             print(recipe_list)
-        
+            print(selected)
+            print(type(selected))
+
         elif selected == "Recipe 2 Ingredients":
             create_new_Recipe_2(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount)
             print(recipe_list)
@@ -897,6 +896,15 @@ def recipe_create():
             pass
 
     return render_template("recipe_create.html", options = options, selected= selected, recipe_name = recipe_name, ing1_name=ing1_name, ing1_amount=ing1_amount, ing2_name=ing2_name, ing2_amount=ing2_amount, ing3_name=ing3_name, ing3_amount=ing3_amount, ing4_name=ing4_name, ing4_amount=ing4_amount, ing5_name=ing5_name, ing5_amount=ing5_amount, ing6_name=ing6_name, ing6_amount=ing6_amount, ing7_name=ing7_name, ing7_amount=ing7_amount, ing8_name=ing8_name, ing8_amount=ing8_amount, ing9_name=ing9_name, ing9_amount=ing9_amount, ing10_name=ing10_name, ing10_amount=ing10_amount)
+
+@app.route("/check_available")
+def check_available():
+    print(available_recipes)
+    check_available_recipes()
+    print(available_recipes)
+
+    return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, available_recipes = available_recipes, Your_meal = Your_meal)
+
 
 # Start app
 if __name__ == "__main__":
