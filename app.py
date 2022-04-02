@@ -794,10 +794,109 @@ def recipe_delete(recipe):
 
     return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, sorted_available_recipes = sorted_available_recipes, Your_meal = Your_meal)
 
-@app.route("/recipe_create")
+@app.route("/recipe_create", methods=['POST', 'GET'])
 def recipe_create():
+    
+    options = ("Recipe 1 Ingredient","Recipe 2 Ingredients","Recipe 3 Ingredients","Recipe 4 Ingredients","Recipe 5 Ingredients","Recipe 6 Ingredients","Recipe 7 Ingredients","Recipe 8 Ingredients","Recipe 9 Ingredients","Recipe 10 Ingredients")
+    selected = None
+    recipe_name = None
+    ing1_name = None
+    ing1_amount = None
+    ing2_name = None
+    ing2_amount = None
+    ing3_name = None
+    ing3_amount = None
+    ing4_name = None
+    ing4_amount = None
+    ing5_name = None
+    ing5_amount = None
+    ing6_name = None
+    ing6_amount = None
+    ing7_name = None
+    ing7_amount = None
+    ing8_name = None
+    ing8_amount = None
+    ing9_name = None
+    ing9_amount = None
+    ing10_name = None
+    ing10_amount = None
+    
+    if request.method == "POST":
+        selected = request.form.get("selector")
+        
+        recipe_name = request.form["recipe_name"]
+        ing1_name = request.form["ing1_name"]
+        ing1_amount = request.form["ing1_amount"]
+        ing2_name = request.form["ing2_name"]
+        ing2_amount = request.form["ing2_amount"]
+        ing3_name = request.form["ing3_name"]
+        ing3_amount = request.form["ing3_amount"]
+        ing4_name = request.form["ing4_name"]
+        ing4_amount = request.form["ing4_amount"]
+        ing5_name = request.form["ing5_name"]
+        ing5_amount = request.form["ing5_amount"]
+        ing6_name = request.form["ing6_name"]
+        ing6_amount = request.form["ing6_amount"]
+        ing7_name = request.form["ing7_name"]
+        ing7_amount = request.form["ing7_amount"]
+        ing8_name = request.form["ing8_name"]
+        ing8_amount = request.form["ing8_amount"]
+        ing9_name = request.form["ing9_name"]
+        ing9_amount = request.form["ing9_amount"]
+        ing10_name = request.form["ing10_name"]
+        ing10_amount = request.form["ing10_amount"]
 
-    return render_template("recipe_create.html")
+        if selected == "Recipe 1 Ingredient":
+            create_new_Recipe_1(name=recipe_name, ing1=ing1_name, ni1=ing1_amount)
+            print(recipe_list)
+        
+        elif selected == "Recipe 2 Ingredients":
+            create_new_Recipe_2(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount)
+            print(recipe_list)
+        
+        elif selected == "Recipe 3 Ingredients":
+            create_new_Recipe_3(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount, ing3=ing3_name, ni3=ing3_amount)
+            
+            print(recipe_list)
+
+        elif selected == "Recipe 4 Ingredients":
+            create_new_Recipe_4(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount, ing3=ing3_name, ni3=ing3_amount, ing4=ing4_name, ni4=ing4_amount)
+            
+            print(recipe_list)
+
+        elif selected == "Recipe 5 Ingredients":
+            create_new_Recipe_5(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount, ing3=ing3_name, ni3=ing3_amount, ing4=ing4_name, ni4=ing4_amount, ing5=ing5_name, ni5=ing5_amount)
+            
+            print(recipe_list)
+
+        elif selected == "Recipe 6 Ingredients":
+            create_new_Recipe_6(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount, ing3=ing3_name, ni3=ing3_amount, ing4=ing4_name, ni4=ing4_amount, ing5=ing5_name, ni5=ing5_amount, ing6=ing6_name, ni6=ing6_amount)
+            
+            print(recipe_list)
+
+        elif selected == "Recipe 7 Ingredients":
+            create_new_Recipe_7(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount, ing3=ing3_name, ni3=ing3_amount, ing4=ing4_name, ni4=ing4_amount, ing5=ing5_name, ni5=ing5_amount, ing6=ing6_name, ni6=ing6_amount, ing7=ing7_name, ni7=ing7_amount)
+            
+            print(recipe_list)
+
+        elif selected == "Recipe 8 Ingredients":
+            create_new_Recipe_8(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount, ing3=ing3_name, ni3=ing3_amount, ing4=ing4_name, ni4=ing4_amount, ing5=ing5_name, ni5=ing5_amount, ing6=ing6_name, ni6=ing6_amount, ing7=ing7_name, ni7=ing7_amount, ing8=ing8_name, ni8=ing8_amount)
+            
+            print(recipe_list)
+
+        elif selected == "Recipe 9 Ingredients":
+            create_new_Recipe_9(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount, ing3=ing3_name, ni3=ing3_amount, ing4=ing4_name, ni4=ing4_amount, ing5=ing5_name, ni5=ing5_amount, ing6=ing6_name, ni6=ing6_amount, ing7=ing7_name, ni7=ing7_amount, ing8=ing8_name, ni8=ing8_amount, ing9=ing9_name, ni9=ing9_amount)
+            
+            print(recipe_list)
+        
+        elif selected == "Recipe 10 Ingredients":
+            create_new_Recipe_10(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount, ing3=ing3_name, ni3=ing3_amount, ing4=ing4_name, ni4=ing4_amount, ing5=ing5_name, ni5=ing5_amount, ing6=ing6_name, ni6=ing6_amount, ing7=ing7_name, ni7=ing7_amount, ing8=ing8_name, ni8=ing8_amount, ing9=ing9_name, ni9=ing9_amount, ing10=ing10_name, ni10=ing10_amount)
+            
+            print(recipe_list)
+        else:
+            pass
+
+    return render_template("recipe_create.html", options = options, selected= selected, recipe_name = recipe_name, ing1_name=ing1_name, ing1_amount=ing1_amount, ing2_name=ing2_name, ing2_amount=ing2_amount, ing3_name=ing3_name, ing3_amount=ing3_amount, ing4_name=ing4_name, ing4_amount=ing4_amount, ing5_name=ing5_name, ing5_amount=ing5_amount, ing6_name=ing6_name, ing6_amount=ing6_amount, ing7_name=ing7_name, ing7_amount=ing7_amount, ing8_name=ing8_name, ing8_amount=ing8_amount, ing9_name=ing9_name, ing9_amount=ing9_amount, ing10_name=ing10_name, ing10_amount=ing10_amount)
 
 # Start app
 if __name__ == "__main__":

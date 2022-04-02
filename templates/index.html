@@ -41,7 +41,6 @@
                 <input type="submit" value="Add/Update Ingredient">
             </form>
         </div> <!-- End of ingredients__form-->
-
     </div> <!-- End of ingredients__container-->
 
     <!-- Recipes Container-->
@@ -71,6 +70,12 @@
             {% endfor %}
             </tbody> <!-- End of recipes__table__body-->
         </table> <!-- End of recipes__table-->
+        
+        <div class="recipe__form">
+            <form action="/recipe_create">
+                <input class="recipe__create__button" type="submit" value="Create Recipe">
+            </form> <!-- End of form-->
+        </div> <!-- End of recipe__form-->
     </div> <!-- End of recipes__container-->
 
     <!-- Available Container-->
