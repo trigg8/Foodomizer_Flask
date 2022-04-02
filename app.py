@@ -319,7 +319,7 @@ def accept_choice():
     random_meal_list.append(Your_meal)
     #print(random_meal_list)
     print("Your Meal is: ", Your_meal)
-    accept = input("Do you accept this choice? Yes or No: ")
+    accept = input("")
     if accept == "Yes":
         for rcp in random_meal_list:
             if type(rcp) == Recipe_1:
@@ -499,12 +499,16 @@ def print_ingredients():
 # Flask routes
 @app.route("/")
 def index():
+    print("This is what it thinks ingredients is ", ingredients)
+    sorted_ingredients = dict(sorted(ingredients.items()))
+    print("This is what it thinks sorted_ingredients is ",sorted_ingredients)
+    
     return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, available_recipes = available_recipes, Your_meal = Your_meal)
 
 @app.route("/ingredient_add", methods=["POST"])
 def ingredient_add():
     name = request.form["ingredients_name"]
-    num = request.form["ingredients_amount"]
+    num = int(request.form["ingredients_amount"])
     ingredients[name] = num
     sorted_ingredients = dict(sorted(ingredients.items()))
     print(ingredients)
@@ -788,6 +792,7 @@ def recipe_delete(recipe):
     except:
         print("Fuck Me")
 
+    sorted_ingredients = dict(sorted(ingredients.items()))
 
     return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, available_recipes = available_recipes, Your_meal = Your_meal)
 
@@ -844,52 +849,52 @@ def recipe_create():
         ing10_amount = request.form["ing10_amount"]
 
         if selected == "Recipe 1 Ingredient":
-            create_new_Recipe_1(name=recipe_name, ing1=ing1_name, ni1=ing1_amount)
+            create_new_Recipe_1(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount))
             print(recipe_list)
             print(selected)
             print(type(selected))
 
         elif selected == "Recipe 2 Ingredients":
-            create_new_Recipe_2(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount)
+            create_new_Recipe_2(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount))
             print(recipe_list)
         
         elif selected == "Recipe 3 Ingredients":
-            create_new_Recipe_3(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount, ing3=ing3_name, ni3=ing3_amount)
+            create_new_Recipe_3(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount))
             
             print(recipe_list)
 
         elif selected == "Recipe 4 Ingredients":
-            create_new_Recipe_4(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount, ing3=ing3_name, ni3=ing3_amount, ing4=ing4_name, ni4=ing4_amount)
+            create_new_Recipe_4(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount))
             
             print(recipe_list)
 
         elif selected == "Recipe 5 Ingredients":
-            create_new_Recipe_5(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount, ing3=ing3_name, ni3=ing3_amount, ing4=ing4_name, ni4=ing4_amount, ing5=ing5_name, ni5=ing5_amount)
+            create_new_Recipe_5(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount))
             
             print(recipe_list)
 
         elif selected == "Recipe 6 Ingredients":
-            create_new_Recipe_6(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount, ing3=ing3_name, ni3=ing3_amount, ing4=ing4_name, ni4=ing4_amount, ing5=ing5_name, ni5=ing5_amount, ing6=ing6_name, ni6=ing6_amount)
+            create_new_Recipe_6(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount), ing6=ing6_name, ni6=int(ing6_amount))
             
             print(recipe_list)
 
         elif selected == "Recipe 7 Ingredients":
-            create_new_Recipe_7(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount, ing3=ing3_name, ni3=ing3_amount, ing4=ing4_name, ni4=ing4_amount, ing5=ing5_name, ni5=ing5_amount, ing6=ing6_name, ni6=ing6_amount, ing7=ing7_name, ni7=ing7_amount)
+            create_new_Recipe_7(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount), ing6=ing6_name, ni6=int(ing6_amount), ing7=ing7_name, ni7=int(ing7_amount))
             
             print(recipe_list)
 
         elif selected == "Recipe 8 Ingredients":
-            create_new_Recipe_8(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount, ing3=ing3_name, ni3=ing3_amount, ing4=ing4_name, ni4=ing4_amount, ing5=ing5_name, ni5=ing5_amount, ing6=ing6_name, ni6=ing6_amount, ing7=ing7_name, ni7=ing7_amount, ing8=ing8_name, ni8=ing8_amount)
+            create_new_Recipe_8(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount), ing6=ing6_name, ni6=int(ing6_amount), ing7=ing7_name, ni7=int(ing7_amount), ing8=ing8_name, ni8=int(ing8_amount))
             
             print(recipe_list)
 
         elif selected == "Recipe 9 Ingredients":
-            create_new_Recipe_9(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount, ing3=ing3_name, ni3=ing3_amount, ing4=ing4_name, ni4=ing4_amount, ing5=ing5_name, ni5=ing5_amount, ing6=ing6_name, ni6=ing6_amount, ing7=ing7_name, ni7=ing7_amount, ing8=ing8_name, ni8=ing8_amount, ing9=ing9_name, ni9=ing9_amount)
+            create_new_Recipe_9(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount), ing6=ing6_name, ni6=int(ing6_amount), ing7=ing7_name, ni7=int(ing7_amount), ing8=ing8_name, ni8=int(ing8_amount), ing9=ing9_name, ni9=int(ing9_amount))
             
             print(recipe_list)
         
         elif selected == "Recipe 10 Ingredients":
-            create_new_Recipe_10(name=recipe_name, ing1=ing1_name, ni1=ing1_amount, ing2=ing2_name, ni2=ing2_amount, ing3=ing3_name, ni3=ing3_amount, ing4=ing4_name, ni4=ing4_amount, ing5=ing5_name, ni5=ing5_amount, ing6=ing6_name, ni6=ing6_amount, ing7=ing7_name, ni7=ing7_amount, ing8=ing8_name, ni8=ing8_amount, ing9=ing9_name, ni9=ing9_amount, ing10=ing10_name, ni10=ing10_amount)
+            create_new_Recipe_10(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount), ing6=ing6_name, ni6=int(ing6_amount), ing7=ing7_name, ni7=int(ing7_amount), ing8=ing8_name, ni8=int(ing8_amount), ing9=ing9_name, ni9=int(ing9_amount), ing10=ing10_name, ni10=int(ing10_amount))
             
             print(recipe_list)
         else:
@@ -903,8 +908,107 @@ def check_available():
     check_available_recipes()
     print(available_recipes)
 
+    sorted_ingredients = dict(sorted(ingredients.items()))
+
     return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, available_recipes = available_recipes, Your_meal = Your_meal)
 
+@app.route("/your_meal")
+def your_meal():
+    random_meal()
+    sorted_ingredients = dict(sorted(ingredients.items()))
+
+    return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, available_recipes = available_recipes, Your_meal = Your_meal)
+
+@app.route("/accept_choice_yes", methods=["GET", "POST"])
+def accept_choice_yes():
+    random_meal_list = []
+    random_meal_list.append(Your_meal)
+    print(random_meal_list)
+
+    for rcp in random_meal_list:
+        print(type(rcp))
+        if type(rcp) == Recipe_1:
+            ingredients[rcp.ing1] -= rcp.ni1
+        elif type(rcp) == Recipe_2:
+            ingredients[rcp.ing1] -= rcp.ni1
+            ingredients[rcp.ing2] -= rcp.ni2
+        elif type(rcp) == Recipe_3:
+            ingredients[rcp.ing1] -= rcp.ni1
+            ingredients[rcp.ing2] -= rcp.ni2
+            ingredients[rcp.ing3] -= rcp.ni3
+        elif type(rcp) == Recipe_4:
+            ingredients[rcp.ing1] -= rcp.ni1
+            ingredients[rcp.ing2] -= rcp.ni2
+            ingredients[rcp.ing3] -= rcp.ni3
+            ingredients[rcp.ing4] -= rcp.ni4
+        elif type(rcp) == Recipe_5:
+            ingredients[rcp.ing1] -= rcp.ni1
+            ingredients[rcp.ing2] -= rcp.ni2
+            ingredients[rcp.ing3] -= rcp.ni3
+            ingredients[rcp.ing4] -= rcp.ni4
+            ingredients[rcp.ing5] -= rcp.ni5
+        elif type(rcp) == Recipe_6:
+            ingredients[rcp.ing1] -= rcp.ni1
+            ingredients[rcp.ing2] -= rcp.ni2
+            ingredients[rcp.ing3] -= rcp.ni3
+            ingredients[rcp.ing4] -= rcp.ni4
+            ingredients[rcp.ing5] -= rcp.ni5
+            ingredients[rcp.ing6] -= rcp.ni6
+        elif type(rcp) == Recipe_7:
+            ingredients[rcp.ing1] -= rcp.ni1
+            ingredients[rcp.ing2] -= rcp.ni2
+            ingredients[rcp.ing3] -= rcp.ni3
+            ingredients[rcp.ing4] -= rcp.ni4
+            ingredients[rcp.ing5] -= rcp.ni5
+            ingredients[rcp.ing6] -= rcp.ni6
+            ingredients[rcp.ing7] -= rcp.ni7
+        elif type(rcp) == Recipe_8:
+            ingredients[rcp.ing1] -= rcp.ni1
+            ingredients[rcp.ing2] -= rcp.ni2
+            ingredients[rcp.ing3] -= rcp.ni3
+            ingredients[rcp.ing4] -= rcp.ni4
+            ingredients[rcp.ing5] -= rcp.ni5
+            ingredients[rcp.ing6] -= rcp.ni6
+            ingredients[rcp.ing7] -= rcp.ni7
+            ingredients[rcp.ing8] -= rcp.ni8
+        elif type(rcp) == Recipe_9:
+            ingredients[rcp.ing1] -= rcp.ni1
+            ingredients[rcp.ing2] -= rcp.ni2
+            ingredients[rcp.ing3] -= rcp.ni3
+            ingredients[rcp.ing4] -= rcp.ni4
+            ingredients[rcp.ing5] -= rcp.ni5
+            ingredients[rcp.ing6] -= rcp.ni6
+            ingredients[rcp.ing7] -= rcp.ni7
+            ingredients[rcp.ing8] -= rcp.ni8
+            ingredients[rcp.ing9] -= rcp.ni9
+        elif type(rcp) == Recipe_10:
+            ingredients[rcp.ing1] -= rcp.ni1
+            ingredients[rcp.ing2] -= rcp.ni2
+            ingredients[rcp.ing3] -= rcp.ni3
+            ingredients[rcp.ing4] -= rcp.ni4
+            ingredients[rcp.ing5] -= rcp.ni5
+            ingredients[rcp.ing6] -= rcp.ni6
+            ingredients[rcp.ing7] -= rcp.ni7
+            ingredients[rcp.ing8] -= rcp.ni8
+            ingredients[rcp.ing9] -= rcp.ni9
+            ingredients[rcp.ing10] -= rcp.ni10
+    
+    print("Current ingredients: ", ingredients)
+    sorted_ingredients = dict(sorted(ingredients.items()))
+    check_available_recipes()
+    print(sorted_ingredients)
+
+    return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, available_recipes = available_recipes, Your_meal = Your_meal)
+
+@app.route("/accept_choice_no", methods=["GET", "POST"])
+def accept_choice_no():
+    random_meal()
+
+    print(Your_meal)
+
+    sorted_ingredients = dict(sorted(ingredients.items()))
+
+    return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, available_recipes = available_recipes, Your_meal = Your_meal)
 
 # Start app
 if __name__ == "__main__":
