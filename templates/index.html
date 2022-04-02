@@ -51,6 +51,7 @@
             <thead class="recipes__table__header">
                 <tr>
                     <th>Name</th>
+                    <th>Action</th>
                 </tr>
             </thead> <!-- End of recipes__table__header-->
             <tbody class="recipes__table__body">
@@ -59,6 +60,11 @@
                     <td>
                         <a href="/recipe_details/{{recipe}}">
                             {{ recipe }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/recipe_delete/{{recipe}}">
+                            X
                         </a>
                     </td>
                 </tr>

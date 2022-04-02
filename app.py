@@ -775,6 +775,30 @@ def recipe_details(recipe):
 
     return render_template("recipe_details.html", recipe_name = recipe_name, ing1 = ing1, ing2 = ing2, ing3 = ing3, ing4 = ing4, ing5 = ing5, ing6 = ing6, ing7 = ing7, ing8 = ing8, ing9 = ing9, ing10 = ing10, ni1 = ni1, ni2 = ni2, ni3 = ni3, ni4 = ni4, ni5 = ni5, ni6 = ni6, ni7 = ni7, ni8 = ni8, ni9 = ni9, ni10 = ni10)
 
+@app.route("/recipe_delete/<recipe>")
+def recipe_delete(recipe):
+    print(recipe)
+    print(type(recipe))
+
+    temp_list = list(map(str, recipe_list))
+    try:
+        if recipe in temp_list:
+            index = temp_list.index(recipe)
+    except:
+        print("Fuck Me")
+
+    print(index)
+
+    recipe_list.pop(index)
+    print(recipe_list)
+
+    return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, sorted_available_recipes = sorted_available_recipes, Your_meal = Your_meal)
+
+@app.route("/recipe_create")
+def recipe_create():
+
+    return render_template("recipe_create.html")
+
 # Start app
 if __name__ == "__main__":
     app.run(debug=True)
