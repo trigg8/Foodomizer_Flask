@@ -714,7 +714,6 @@ def accept_choice_yes():
     random_meal_list.append(Your_meal)
     try:
         for rcp in random_meal_list:
-            print(type(rcp))
             if type(rcp) == Recipe_1:
                 ingredients[rcp.ing1] -= rcp.ni1
             elif type(rcp) == Recipe_2:
