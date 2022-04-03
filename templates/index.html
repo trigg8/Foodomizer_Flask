@@ -5,14 +5,14 @@
 {% endblock %} 
 
 {% block body %} 
-<h1>Foodomizer</h1>
+<h1 class="app__title">Foodomizer</h1>
 <div class="content__container">
     
     <!-- Ingredients Container-->
     <div class="ingredients__container">
-        <h2>Your Ingredients</h2>
-        <table class="ingredients__table">
-            <thead class="ingredients__table__header">
+        <h2 class="table__title">Your Ingredients</h2>
+        <table class="table">
+            <thead class="table__header">
                 <tr>
                     <th>Name</th>
                     <th>Amount</th>
@@ -24,8 +24,8 @@
                 <tr>
                     <td class="ingredient_key" name="ingredient_key"> {{ key }}</td>
                     <td class="ingredient_value" name="ingredient_value"> {{ value }}</td>
-                    <td>
-                        <a href="/ingredient_delete/{{key}}">
+                    <td class="ingredient_action">
+                        <a href="/ingredient_delete/{{key}}" class="ingredient__delete__button">
                             X 
                         </a>
                     </td>
@@ -36,18 +36,20 @@
 
         <div class="ingredients__form">
             <form action="/ingredient_add" method="POST">
+                <label class="ingredients_name_label">Ingredient Name</label>
+                <label class="ingredients_amount_label">Amount</label>
                 <input type="text" name="ingredients_name" class="ingredients_name">
-                <input type="text" name="ingredients_amount" class="ingredients_amount">
-                <input type="submit" value="Add/Update Ingredient">
+                <input type="text" name="ingredients_amount" class="ingredients_amount"><br>
+                <input type="submit" value="Add/Update Ingredient" class="ingredients_button">
             </form>
         </div> <!-- End of ingredients__form-->
     </div> <!-- End of ingredients__container-->
 
     <!-- Recipes Container-->
     <div class="recipes__container">
-        <h2>Your Recipes</h2>
-        <table class="recipes__table">
-            <thead class="recipes__table__header">
+        <h2 class="table__title">Your Recipes</h2>
+        <table class="table">
+            <thead class="table__header">
                 <tr>
                     <th>Name</th>
                     <th>Action</th>
@@ -56,13 +58,13 @@
             <tbody class="recipes__table__body">
             {% for recipe in recipe_list %}
                 <tr>
-                    <td>
+                    <td class="recipes__table__recipe">
                         <a href="/recipe_details/{{recipe}}">
                             {{ recipe }}
                         </a>
                     </td>
-                    <td>
-                        <a href="/recipe_delete/{{recipe}}">
+                    <td class="recipes__table__recipe">
+                        <a href="/recipe_delete/{{recipe}}" class="recipe__delete__button">
                             X
                         </a>
                     </td>
@@ -80,9 +82,9 @@
 
     <!-- Available Container-->
     <div class="available__container">
-        <h2>Available Recipes</h2>
-        <table class="available__table">
-            <thead class="available__table__header">
+        <h2 class="table__title">Available Recipes</h2>
+        <table class="table">
+            <thead class="table__header">
                 <tr>
                     <th>Name</th>
                 </tr>
@@ -105,9 +107,9 @@
 
     <!-- Your Meal Container-->
     <div class="yourmeal__container">
-        <h2>Your Meal</h2>
-        <table class="yourmeal__table">
-            <thead class="yourmeal__table__header">
+        <h2 class="table__title">Your Meal</h2>
+        <table class="table">
+            <thead class="table__header">
                 <tr>
                     <th>Name</th>
                 </tr>

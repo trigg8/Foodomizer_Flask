@@ -1,11 +1,28 @@
 /* Root Styles */
 
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0em;
+    padding: 0em;
     box-sizing: border-box;
     font-family:'Courier New', Courier, monospace;
     font-weight: bold;
+    scrollbar-width: thin;
+    scrollbar-color: blue orange;
+}
+
+*::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+}
+  
+*::-webkit-scrollbar-track {
+    background: orange;
+}
+  
+*::-webkit-scrollbar-thumb {
+    background-color: blue;
+    border-radius: 1em;
+    border: 0.15em solid orange;
 }
 
 :root {
@@ -18,32 +35,147 @@
 
     /* Font-size */
     --fs-h1: 3rem;
-    --fs-h2: 2.25rem;
+    --fs-h2: 1.5rem;
     --fs-h3: 1.25rem;
     --fs-body: 1rem;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: var(--clr-light);
+    background-color: var(--clr-dark);
 }
 
 .content__container {
-    background-color: var(--clr-dark-secondary);
     display: flex;
+    background-color: red;
+    max-height: 85vh;
+    min-height: 85vh;
 }
+
+.app__title {
+    color: var(--clr-accent);
+    text-align: center;
+    font-size: var(--fs-h1);
+    padding: 0em;
+    margin: 0.5rem;
+}
+
+/* Table */
+
+.table__title {
+    background-color: aqua;
+    border: 2px solid black;
+    border-radius: 1em;
+    text-align: center;
+    font-size: var(--fs-h2);
+}
+
+.table {
+    display: block;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    max-width: 95%;
+    min-width: 95%;
+    max-height: 73%;
+    min-height: 73%;
+    overflow: scroll;
+}
+
+.table__header {
+    background-color: green;
+    text-align: center;
+}
+
+/* Ingredients Section */
 
 .ingredients__container {
     background-color: lightskyblue;
+    border-radius: 1em;
+    margin-left: 0.5rem;
+    width: 25%;
 }
+
+.ingredients__table__body {
+    background-color: azure;
+    text-align: center;
+}
+
+.ingredient_key {
+    display: block;
+    height: 1.5rem;
+    width: 10.25rem;
+    overflow: hidden;
+    padding-top: 0.2em;
+}
+
+.ingredient__delete__button {
+    text-decoration: none;
+    color: black;
+}
+
+.ingredients__form {
+    background-color: deeppink;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.ingredients_name_label {
+    margin-left: 2.5em;
+    margin-right: 2.6em;
+}
+
+.ingredients_name {
+    width: 13.5em;
+    margin-top: 0.25em;
+}
+
+.ingredients_amount {
+    width: 4em;
+}
+
+.ingredients_button {
+    color: red;
+    margin-top: 0.25em;
+    margin-left: 3.4em;
+}
+
+/* Recipe Section */
 
 .recipes__container {
     background-color: lightseagreen;
+    border-radius: 1em;
+    margin-left: 0.5rem;
+    width: 25%;
 }
+
+.recipes__table__body {
+    background-color: azure;
+    text-align: center;
+}
+
+
+
+/* Available Section */
 
 .available__container {
     background-color: lightsalmon;
+    border-radius: 1em;
+    margin-left: 0.5rem;
+    width: 25%;
 }
+
+/* Your Meal Secition */
 
 .yourmeal__container {
     background-color: lightgreen;
+    border-radius: 1em;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    width: 25%;
 }
