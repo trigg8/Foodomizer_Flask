@@ -100,6 +100,12 @@ body {
     padding-top: 0.1em;
 }
 
+.table__body {
+    background-color: azure;
+    text-align: center;
+    font-size: var(--fs-body);
+}
+
 /* Ingredients Section */
 
 .ingredients__container {
@@ -107,12 +113,6 @@ body {
     border-radius: 1em;
     margin-left: 0.5rem;
     width: 25%;
-}
-
-.ingredients__table__body {
-    background-color: azure;
-    text-align: center;
-    font-size: var(--fs-body);
 }
 
 .ingredient_key {
@@ -163,11 +163,6 @@ body {
     width: 25%;
 }
 
-.recipes__table__body {
-    background-color: azure;
-    text-align: center;
-}
-
 .recipes__table__recipe {
     display: block;
     height: 1.5rem;
@@ -199,6 +194,20 @@ body {
     border-radius: 1em;
     margin-left: 0.5rem;
     width: 25%;
+}
+
+.available__table__recipe {
+    display: block;
+    height: 1.5rem;
+    width: 17.5em;
+    overflow: hidden;
+    padding-top: 0.2em;
+}
+
+.check__available__button {
+    margin: 1.4em;
+    margin-left: 3.6em;
+    color: red;
 }
 
 /* Your Meal Secition */

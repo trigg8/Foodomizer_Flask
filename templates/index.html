@@ -19,7 +19,7 @@
                     <th>Action</th>
                 </tr>
             </thead> <!-- End of ingredients__table__header-->
-            <tbody class="ingredients__table__body">
+            <tbody class="table__body">
             {% for key, value in sorted_ingredients.items() %}
                 <tr>
                     <td class="ingredient_key" name="ingredient_key"> {{ key }}</td>
@@ -55,7 +55,7 @@
                     <th>Action</th>
                 </tr>
             </thead> <!-- End of recipes__table__header-->
-            <tbody class="recipes__table__body">
+            <tbody class="table__body">
             {% for recipe in recipe_list %}
                 <tr>
                     <td class="recipes__table__recipe">
@@ -89,10 +89,10 @@
                     <th>Name</th>
                 </tr>
             </thead> <!-- End of available__table__header-->
-            <tbody class="available__table__body">
+            <tbody class="table__body">
             {% for recipe in available_recipes %}
                 <tr>
-                    <td> {{ recipe }}</td>
+                    <td class="available__table__recipe"> {{ recipe }}</td>
                 </tr>
             {% endfor %}
             </tbody> <!-- End of available__table__body-->
@@ -114,7 +114,7 @@
                     <th>Name</th>
                 </tr>
             </thead> <!-- End of yourmeal__table__header-->
-            <tbody class="yourmeal__table__body">
+            <tbody class="table__body">
                 <tr>
                     <td> {{ Your_meal }}</td>
                 </tr>
