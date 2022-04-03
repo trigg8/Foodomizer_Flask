@@ -334,3 +334,77 @@ body {
 }
 
 /* Create Recipe Modal */
+
+.create__title {
+    color: var(--clr-accent);
+    text-align: center;
+    font-size: var(--fs-h1);
+    padding: 0em;
+    margin: 0.5rem;
+}
+
+.recipe__type__selector {
+    background-color: var(--clr-accent);
+    border-radius: 1em;
+    width: 50%;
+    height: 82vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    padding: 1em;
+}
+
+.selector__label {
+    margin-left: 0em;
+    color: black;
+    font-size: 1.10rem;
+}
+
+.selector__dropdown {
+    color: red;
+}
+
+.create__recipe__name__label {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    margin-right: 0em;
+    margin-left: 8em;
+    display: inline-block;
+}
+
+.create_ingredient_name_label {
+    color:black;
+    background-color: chocolate;
+    margin-top: 0.75em;
+    margin-left: 1em;
+    display: inline-block;
+}
+
+.create_ingredient_name_input {
+    background-color: cadetblue;
+    width: 13.5em;
+}
+
+.create_ingredient_amount_label {
+    color: gold;
+    margin-left: 1em;
+}
+
+.create_ingredient_amount_input {
+    background-color: khaki;
+    width: 5em;
+}
+
+.create__button {
+    display: inline-block;
+    margin-left: 15em;
+    margin-top: 1em;
+    color: red;
+}
+
+.homepage__button {
+    display: inline-block;
+    color: lightblue;
+    margin-top: 0.5em;
+    margin-left: 13.3em;
+}

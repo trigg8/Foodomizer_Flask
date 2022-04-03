@@ -5,14 +5,16 @@
 {% endblock %}
 
 {% block body %}
-<h1>Create Recipe</h1>
+<h1 class="create__title">
+    Create Recipe
+</h1>
 
 <div class="recipe__type__selector">
     <form action="/recipe_create" method="POST">
-        <label>
+        <label class="selector__label">
             Select which type of recipe to create
         </label>
-        <select title="selector" name="selector">
+        <select title="selector" name="selector" class="selector__dropdown">
             {% for op in options %}
                 {% if selected == op %}
                     <option value="{{op}}" selected>{{op}}</option>
@@ -22,52 +24,105 @@
             {% endfor %}
         </select>
         
-        <label>Recipe Name</label>
-        <input type="text" name="recipe_name"><br>
-        <label>Ingredient 1 Name</label>
-        <input type="text" name="ing1_name"><br>
-        <label>Ingredient 1 Amount</label>
-        <input type="text" name="ing1_amount"><br>     
-        <label>Ingredient 2 Name</label>
-        <input type="text" name="ing2_name"><br>
-        <label>Ingredient 2 Amount</label>
-        <input type="text" name="ing2_amount"><br>
-        <label>Ingredient 3 Name</label>
-        <input type="text" name="ing3_name"><br>
-        <label>Ingredient 3 Amount</label>
-        <input type="text" name="ing3_amount"><br>
-        <label>Ingredient 4 Name</label>
-        <input type="text" name="ing4_name"><br>
-        <label>Ingredient 4 Amount</label>
-        <input type="text" name="ing4_amount"><br>
-        <label>Ingredient 5 Name</label>
-        <input type="text" name="ing5_name"><br>
-        <label>Ingredient 5 Amount</label>
-        <input type="text" name="ing5_amount"><br>
-        <label>Ingredient 6 Name</label>
-        <input type="text" name="ing6_name"><br>
-        <label>Ingredient 6 Amount</label>
-        <input type="text" name="ing6_amount"><br>
-        <label>Ingredient 7 Name</label>
-        <input type="text" name="ing7_name"><br>
-        <label>Ingredient 7 Amount</label>
-        <input type="text" name="ing7_amount"><br>
-        <label>Ingredient 8 Name</label>
-        <input type="text" name="ing8_name"><br>
-        <label>Ingredient 8 Amount</label>
-        <input type="text" name="ing8_amount"><br>
-        <label>Ingredient 9 Name</label>
-        <input type="text" name="ing9_name"><br>
-        <label>Ingredient 9 Amount</label>
-        <input type="text"name="ing9_amount"><br>
-        <label>Ingredient 10 Name</label>
-        <input type="text" name="ing10_name"><br>
-        <label>Ingredient 10 Amount</label>
-        <input type="text" name="ing10_amount"><br>
-        <input type="submit" value="Create Recipe">
+        <label class="create__recipe__name__label">
+            Recipe Name
+        </label>
+        <input type="text" name="recipe_name" class="create__recipe__name__input"><br>
+        
+        <label class="create_ingredient_name_label">
+            Ingredient 01 Name
+        </label>
+        <input type="text" name="ing1_name" class="create_ingredient_name_input">
+        <label class="create_ingredient_amount_label">
+            Amount
+        </label>
+        <input type="text" name="ing1_amount" class="create_ingredient_amount_input"><br>     
+        
+        <label class="create_ingredient_name_label">
+            Ingredient 02 Name
+        </label>
+        <input type="text" name="ing2_name" class="create_ingredient_name_input">
+        <label class="create_ingredient_amount_label">
+            Amount
+        </label>
+        <input type="text" name="ing2_amount" class="create_ingredient_amount_input"><br>
+        
+        <label class="create_ingredient_name_label">
+            Ingredient 03 Name
+        </label>
+        <input type="text" name="ing3_name" class="create_ingredient_name_input">
+        <label class="create_ingredient_amount_label">
+            Amount
+        </label>
+        <input type="text" name="ing3_amount" class="create_ingredient_amount_input"><br>
+        
+        <label class="create_ingredient_name_label">
+            Ingredient 04 Name
+        </label>
+        <input type="text" name="ing4_name" class="create_ingredient_name_input">
+        <label class="create_ingredient_amount_label">
+            Amount
+        </label>
+        <input type="text" name="ing4_amount" class="create_ingredient_amount_input"><br>
+        
+        <label class="create_ingredient_name_label">
+            Ingredient 05 Name
+        </label>
+        <input type="text" name="ing5_name" class="create_ingredient_name_input">
+        <label class="create_ingredient_amount_label">
+            Amount
+        </label>
+        <input type="text" name="ing5_amount" class="create_ingredient_amount_input"><br>
+        
+        <label class="create_ingredient_name_label">
+            Ingredient 06 Name
+        </label>
+        <input type="text" name="ing6_name" class="create_ingredient_name_input">
+        <label class="create_ingredient_amount_label">
+            Amount
+        </label>
+        <input type="text" name="ing6_amount" class="create_ingredient_amount_input"><br>
+        
+        <label class="create_ingredient_name_label">
+            Ingredient 07 Name
+        </label>
+        <input type="text" name="ing7_name" class="create_ingredient_name_input">
+        <label class="create_ingredient_amount_label">
+            Amount
+        </label>
+        <input type="text" name="ing7_amount" class="create_ingredient_amount_input"><br>
+        
+        <label class="create_ingredient_name_label">
+            Ingredient 08 Name
+        </label>
+        <input type="text" name="ing8_name" class="create_ingredient_name_input">
+        <label class="create_ingredient_amount_label">
+            Amount
+        </label>
+        <input type="text" name="ing8_amount" class="create_ingredient_amount_input"><br>
+        
+        <label class="create_ingredient_name_label">
+            Ingredient 09 Name
+        </label>
+        <input type="text" name="ing9_name" class="create_ingredient_name_input">
+        <label class="create_ingredient_amount_label">
+            Amount
+        </label>
+        <input type="text"name="ing9_amount" class="create_ingredient_amount_input"><br>
+        
+        <label class="create_ingredient_name_label">
+            Ingredient 10 Name
+        </label>
+        <input type="text" name="ing10_name" class="create_ingredient_name_input">
+        <label class="create_ingredient_amount_label">
+            Amount
+        </label>
+        <input type="text" name="ing10_amount" class="create_ingredient_amount_input"><br>
+        
+        <input type="submit" value="Create Recipe" class="create__button">
     </form>
     <form action="/">
-        <input type="submit" value="Return to Home Page">
+        <input type="submit" value="Return to Home Page" class="homepage__button">
     </form>
 </div>
 
