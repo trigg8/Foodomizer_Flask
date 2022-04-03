@@ -64,7 +64,7 @@ body {
     margin: 0.5rem;
 }
 
-/* Table */
+/* General Table */
 
 .table__title {
     background-color: aqua;
@@ -85,7 +85,7 @@ body {
     min-width: 95%;
     max-height: 73%;
     min-height: 73%;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .table__header {
@@ -118,7 +118,7 @@ body {
 .ingredient_key {
     display: block;
     height: 1.5rem;
-    width: 9rem;
+    width: 8.9rem;
     overflow: hidden;
     padding-top: 0.2em;
 }
@@ -218,4 +218,42 @@ body {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     width: 25%;
+}
+
+.yourmeal__table__recipe {
+    display: block;
+    height: 1.5rem;
+    width: 17.5em;
+    overflow: hidden;
+    padding-top: 0.2em;
+}
+
+.yourmeal__button {
+    margin-left: 6em;
+    margin-bottom: 0.25em;
+    color: red;
+}
+
+.yourmeal__accept__label {
+    margin-left: 2.8em;
+}
+
+.yourmeal__bottom__container {
+    display: inline-flex;
+    background-color: brown;
+    margin-top: 0.5em;
+}
+
+.accept__yes {
+    display: inline-block;
+    margin-left: 6.5em;
+    margin-right: 2em;
+    width: 2em;
+    color: red;
+}
+
+.accept__no {
+    display: inline-block;
+    width: 2em;
+    color: red;
 }
