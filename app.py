@@ -1,23 +1,20 @@
 import random
-import json
-import pickle
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, request
+
 
 app = Flask(__name__)
+
 
 # List Constants
 recipe_list = []
 
 available_recipes = []
 
-
 Your_meal = ""
 
 ingredients = {"Bun": 1, "Beef Patty": 1, "Lettuce": 1, "Cheese": 1, "Tomato": 1, "Pizza Crust": 1, "Tomato Sauce": 1, "Pork" : 2, "Basil": 1, "Rice": 1, "Bread": 2}
 
 sorted_ingredients = dict(sorted(ingredients.items()))
-
-#ingredients = {}
 
 
 # Recipe Classes
@@ -312,485 +309,290 @@ def random_meal():
     Your_meal = random.choice(available_recipes)
     return Your_meal
 
-def accept_choice():
-    random_meal_list = []
-    #print(random_meal_list)
-    random_meal()
-    random_meal_list.append(Your_meal)
-    #print(random_meal_list)
-    print("Your Meal is: ", Your_meal)
-    accept = input("")
-    if accept == "Yes":
-        for rcp in random_meal_list:
-            if type(rcp) == Recipe_1:
-                ingredients[rcp.ing1] -= rcp.ni1
-            elif type(rcp) == Recipe_2:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-            elif type(rcp) == Recipe_3:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-                ingredients[rcp.ing3] -= rcp.ni3
-            elif type(rcp) == Recipe_4:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-                ingredients[rcp.ing3] -= rcp.ni3
-                ingredients[rcp.ing4] -= rcp.ni4
-            elif type(rcp) == Recipe_5:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-                ingredients[rcp.ing3] -= rcp.ni3
-                ingredients[rcp.ing4] -= rcp.ni4
-                ingredients[rcp.ing5] -= rcp.ni5
-            elif type(rcp) == Recipe_6:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-                ingredients[rcp.ing3] -= rcp.ni3
-                ingredients[rcp.ing4] -= rcp.ni4
-                ingredients[rcp.ing5] -= rcp.ni5
-                ingredients[rcp.ing6] -= rcp.ni6
-            elif type(rcp) == Recipe_7:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-                ingredients[rcp.ing3] -= rcp.ni3
-                ingredients[rcp.ing4] -= rcp.ni4
-                ingredients[rcp.ing5] -= rcp.ni5
-                ingredients[rcp.ing6] -= rcp.ni6
-                ingredients[rcp.ing7] -= rcp.ni7
-            elif type(rcp) == Recipe_8:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-                ingredients[rcp.ing3] -= rcp.ni3
-                ingredients[rcp.ing4] -= rcp.ni4
-                ingredients[rcp.ing5] -= rcp.ni5
-                ingredients[rcp.ing6] -= rcp.ni6
-                ingredients[rcp.ing7] -= rcp.ni7
-                ingredients[rcp.ing8] -= rcp.ni8
-            elif type(rcp) == Recipe_9:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-                ingredients[rcp.ing3] -= rcp.ni3
-                ingredients[rcp.ing4] -= rcp.ni4
-                ingredients[rcp.ing5] -= rcp.ni5
-                ingredients[rcp.ing6] -= rcp.ni6
-                ingredients[rcp.ing7] -= rcp.ni7
-                ingredients[rcp.ing8] -= rcp.ni8
-                ingredients[rcp.ing9] -= rcp.ni9
-            elif type(rcp) == Recipe_10:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-                ingredients[rcp.ing3] -= rcp.ni3
-                ingredients[rcp.ing4] -= rcp.ni4
-                ingredients[rcp.ing5] -= rcp.ni5
-                ingredients[rcp.ing6] -= rcp.ni6
-                ingredients[rcp.ing7] -= rcp.ni7
-                ingredients[rcp.ing8] -= rcp.ni8
-                ingredients[rcp.ing9] -= rcp.ni9
-                ingredients[rcp.ing10] -= rcp.ni10
-    
-    elif accept == "No":
-        accept_choice()
-
-    else: 
-        accept_choice_alt()
-        
-def accept_choice_alt():
-    random_meal_list = [Your_meal]
-    accept = input("Please Type Yes or No: ")
-    if accept == "Yes":
-        for rcp in random_meal_list:
-            if type(rcp) == Recipe_1:
-                ingredients[rcp.ing1] -= rcp.ni1
-            elif type(rcp) == Recipe_2:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-            elif type(rcp) == Recipe_3:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-                ingredients[rcp.ing3] -= rcp.ni3
-            elif type(rcp) == Recipe_4:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-                ingredients[rcp.ing3] -= rcp.ni3
-                ingredients[rcp.ing4] -= rcp.ni4
-            elif type(rcp) == Recipe_5:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-                ingredients[rcp.ing3] -= rcp.ni3
-                ingredients[rcp.ing4] -= rcp.ni4
-                ingredients[rcp.ing5] -= rcp.ni5
-            elif type(rcp) == Recipe_6:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-                ingredients[rcp.ing3] -= rcp.ni3
-                ingredients[rcp.ing4] -= rcp.ni4
-                ingredients[rcp.ing5] -= rcp.ni5
-                ingredients[rcp.ing6] -= rcp.ni6
-            elif type(rcp) == Recipe_7:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-                ingredients[rcp.ing3] -= rcp.ni3
-                ingredients[rcp.ing4] -= rcp.ni4
-                ingredients[rcp.ing5] -= rcp.ni5
-                ingredients[rcp.ing6] -= rcp.ni6
-                ingredients[rcp.ing7] -= rcp.ni7
-            elif type(rcp) == Recipe_8:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-                ingredients[rcp.ing3] -= rcp.ni3
-                ingredients[rcp.ing4] -= rcp.ni4
-                ingredients[rcp.ing5] -= rcp.ni5
-                ingredients[rcp.ing6] -= rcp.ni6
-                ingredients[rcp.ing7] -= rcp.ni7
-                ingredients[rcp.ing8] -= rcp.ni8
-            elif type(rcp) == Recipe_9:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-                ingredients[rcp.ing3] -= rcp.ni3
-                ingredients[rcp.ing4] -= rcp.ni4
-                ingredients[rcp.ing5] -= rcp.ni5
-                ingredients[rcp.ing6] -= rcp.ni6
-                ingredients[rcp.ing7] -= rcp.ni7
-                ingredients[rcp.ing8] -= rcp.ni8
-                ingredients[rcp.ing9] -= rcp.ni9
-            elif type(rcp) == Recipe_10:
-                ingredients[rcp.ing1] -= rcp.ni1
-                ingredients[rcp.ing2] -= rcp.ni2
-                ingredients[rcp.ing3] -= rcp.ni3
-                ingredients[rcp.ing4] -= rcp.ni4
-                ingredients[rcp.ing5] -= rcp.ni5
-                ingredients[rcp.ing6] -= rcp.ni6
-                ingredients[rcp.ing7] -= rcp.ni7
-                ingredients[rcp.ing8] -= rcp.ni8
-                ingredients[rcp.ing9] -= rcp.ni9
-                ingredients[rcp.ing10] -= rcp.ni10
-    
-    elif accept == "No":
-        accept_choice()
-
-    else: 
-        accept_choice_alt()
-
-
-# Ingredient Funtions
-def add_ingredient(name):
-    ingredients[name] += 1
-
-def remove_ingredient(name):
-    ingredients[name] -= 1
-
-def add_mult_ingredients(name, num):
-    ingredients[name] += num
-
-def remove_mult_ingredients(name, num):
-    ingredients[name] -= num
-
-def add_new_ingredient(name):
-    ingredients[name] = 1
-
-def add_mult_new_ingredients(name, num):
-    ingredients[name] = num
-
-def print_ingredients():
-    print("Ingredients in list are: ", ingredients)
-
-
 
 # Flask routes
 @app.route("/")
 def index():
-    print("This is what it thinks ingredients is ", ingredients)
     sorted_ingredients = dict(sorted(ingredients.items()))
-    print("This is what it thinks sorted_ingredients is ",sorted_ingredients)
     
     return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, available_recipes = available_recipes, Your_meal = Your_meal)
 
 @app.route("/ingredient_add", methods=["POST"])
 def ingredient_add():
-    name = request.form["ingredients_name"]
-    num = int(request.form["ingredients_amount"])
-    ingredients[name] = num
+    try:
+        name = request.form["ingredients_name"]
+        num = int(request.form["ingredients_amount"])
+        ingredients[name] = num
+    except:
+        print("Error")
+
     sorted_ingredients = dict(sorted(ingredients.items()))
-    print(ingredients)
-    print(sorted_ingredients)
     
     return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, available_recipes = available_recipes, Your_meal = Your_meal)
 
 @app.route("/ingredient_delete/<key>")
 def ingredient_delete(key):
-    ingredients.pop(key)
-    sorted_ingredients = dict(sorted(ingredients.items()))
+    try:
+        ingredients.pop(key)
+    except:
+        print("Error")
 
-    print(ingredients)
-    print(sorted_ingredients)
+    sorted_ingredients = dict(sorted(ingredients.items()))
 
     return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, available_recipes = available_recipes, Your_meal = Your_meal)
 
 @app.route("/recipe_details/<recipe>", methods=["GET"])
-def recipe_details(recipe):
-    print("This is the recipe ", recipe)
-    print(type(recipe))
-    print(type(recipe_list[0]))
-    
+def recipe_details(recipe):    
     temp_list = list(map(str, recipe_list))
     try:
         if recipe in temp_list:
             index = temp_list.index(recipe)
-    except:
-        print("Fuck Me")
-    print(temp_list)
-    print(type(temp_list[0]))
-    print("Index = ", index)
-
-    print("The type of recipe_list[index] is ", type(recipe_list[index]))
-    print(Recipe_3)
-    recipe_name = recipe_list[index]
-    if type(recipe_list[index]) == Recipe_1:
-        ing1 = recipe_list[index].ing1
-        ing2 = ""
-        ing3 = ""
-        ing4 = ""
-        ing5 = ""
-        ing6 = ""
-        ing7 = ""
-        ing8 = ""
-        ing9 = ""
-        ing10 = ""
-
-        ni1 = recipe_list[index].ni1
-        ni2 = ""
-        ni3 = ""
-        ni4 = ""
-        ni5 = ""
-        ni6 = ""
-        ni7 = ""
-        ni8 = ""
-        ni9 = ""
-        ni10 = ""
     
-    elif type(recipe_list[index]) == Recipe_2:
-        ing1 = recipe_list[index].ing1
-        ing2 = recipe_list[index].ing2
-        ing3 = ""
-        ing4 = ""
-        ing5 = ""
-        ing6 = ""
-        ing7 = ""
-        ing8 = ""
-        ing9 = ""
-        ing10 = ""
+        recipe_name = recipe_list[index]
+        if type(recipe_list[index]) == Recipe_1:
+            ing1 = recipe_list[index].ing1
+            ing2 = ""
+            ing3 = ""
+            ing4 = ""
+            ing5 = ""
+            ing6 = ""
+            ing7 = ""
+            ing8 = ""
+            ing9 = ""
+            ing10 = ""
 
-        ni1 = recipe_list[index].ni1
-        ni2 = recipe_list[index].ni2
-        ni3 = ""
-        ni4 = ""
-        ni5 = ""
-        ni6 = ""
-        ni7 = ""
-        ni8 = ""
-        ni9 = ""
-        ni10 = ""
+            ni1 = recipe_list[index].ni1
+            ni2 = ""
+            ni3 = ""
+            ni4 = ""
+            ni5 = ""
+            ni6 = ""
+            ni7 = ""
+            ni8 = ""
+            ni9 = ""
+            ni10 = ""
+        
+        elif type(recipe_list[index]) == Recipe_2:
+            ing1 = recipe_list[index].ing1
+            ing2 = recipe_list[index].ing2
+            ing3 = ""
+            ing4 = ""
+            ing5 = ""
+            ing6 = ""
+            ing7 = ""
+            ing8 = ""
+            ing9 = ""
+            ing10 = ""
 
-    elif type(recipe_list[index]) == Recipe_3:
-        ing1 = recipe_list[index].ing1
-        ing2 = recipe_list[index].ing2
-        ing3 = recipe_list[index].ing3
-        ing4 = ""
-        ing5 = ""
-        ing6 = ""
-        ing7 = ""
-        ing8 = ""
-        ing9 = ""
-        ing10 = ""
+            ni1 = recipe_list[index].ni1
+            ni2 = recipe_list[index].ni2
+            ni3 = ""
+            ni4 = ""
+            ni5 = ""
+            ni6 = ""
+            ni7 = ""
+            ni8 = ""
+            ni9 = ""
+            ni10 = ""
 
-        ni1 = recipe_list[index].ni1
-        ni2 = recipe_list[index].ni2
-        ni3 = recipe_list[index].ni3
-        ni4 = ""
-        ni5 = ""
-        ni6 = ""
-        ni7 = ""
-        ni8 = ""
-        ni9 = ""
-        ni10 = ""
+        elif type(recipe_list[index]) == Recipe_3:
+            ing1 = recipe_list[index].ing1
+            ing2 = recipe_list[index].ing2
+            ing3 = recipe_list[index].ing3
+            ing4 = ""
+            ing5 = ""
+            ing6 = ""
+            ing7 = ""
+            ing8 = ""
+            ing9 = ""
+            ing10 = ""
 
-    elif type(recipe_list[index]) == Recipe_4:
-        ing1 = recipe_list[index].ing1
-        ing2 = recipe_list[index].ing2
-        ing3 = recipe_list[index].ing3
-        ing4 = recipe_list[index].ing4
-        ing5 = ""
-        ing6 = ""
-        ing7 = ""
-        ing8 = ""
-        ing9 = ""
-        ing10 = ""
+            ni1 = recipe_list[index].ni1
+            ni2 = recipe_list[index].ni2
+            ni3 = recipe_list[index].ni3
+            ni4 = ""
+            ni5 = ""
+            ni6 = ""
+            ni7 = ""
+            ni8 = ""
+            ni9 = ""
+            ni10 = ""
 
-        ni1 = recipe_list[index].ni1
-        ni2 = recipe_list[index].ni2
-        ni3 = recipe_list[index].ni3
-        ni4 = recipe_list[index].ni4
-        ni5 = ""
-        ni6 = ""
-        ni7 = ""
-        ni8 = ""
-        ni9 = ""
-        ni10 = ""
+        elif type(recipe_list[index]) == Recipe_4:
+            ing1 = recipe_list[index].ing1
+            ing2 = recipe_list[index].ing2
+            ing3 = recipe_list[index].ing3
+            ing4 = recipe_list[index].ing4
+            ing5 = ""
+            ing6 = ""
+            ing7 = ""
+            ing8 = ""
+            ing9 = ""
+            ing10 = ""
 
-    elif type(recipe_list[index]) == Recipe_5:
-        ing1 = recipe_list[index].ing1
-        ing2 = recipe_list[index].ing2
-        ing3 = recipe_list[index].ing3
-        ing4 = recipe_list[index].ing4
-        ing5 = recipe_list[index].ing5
-        ing6 = ""
-        ing7 = ""
-        ing8 = ""
-        ing9 = ""
-        ing10 = ""
+            ni1 = recipe_list[index].ni1
+            ni2 = recipe_list[index].ni2
+            ni3 = recipe_list[index].ni3
+            ni4 = recipe_list[index].ni4
+            ni5 = ""
+            ni6 = ""
+            ni7 = ""
+            ni8 = ""
+            ni9 = ""
+            ni10 = ""
 
-        ni1 = recipe_list[index].ni1
-        ni2 = recipe_list[index].ni2
-        ni3 = recipe_list[index].ni3
-        ni4 = recipe_list[index].ni4
-        ni5 = recipe_list[index].ni5
-        ni6 = ""
-        ni7 = ""
-        ni8 = ""
-        ni9 = ""
-        ni10 = ""
+        elif type(recipe_list[index]) == Recipe_5:
+            ing1 = recipe_list[index].ing1
+            ing2 = recipe_list[index].ing2
+            ing3 = recipe_list[index].ing3
+            ing4 = recipe_list[index].ing4
+            ing5 = recipe_list[index].ing5
+            ing6 = ""
+            ing7 = ""
+            ing8 = ""
+            ing9 = ""
+            ing10 = ""
 
-    elif type(recipe_list[index]) == Recipe_6:
-        ing1 = recipe_list[index].ing1
-        ing2 = recipe_list[index].ing2
-        ing3 = recipe_list[index].ing3
-        ing4 = recipe_list[index].ing4
-        ing5 = recipe_list[index].ing5
-        ing6 = recipe_list[index].ing6
-        ing7 = ""
-        ing8 = ""
-        ing9 = ""
-        ing10 = ""
+            ni1 = recipe_list[index].ni1
+            ni2 = recipe_list[index].ni2
+            ni3 = recipe_list[index].ni3
+            ni4 = recipe_list[index].ni4
+            ni5 = recipe_list[index].ni5
+            ni6 = ""
+            ni7 = ""
+            ni8 = ""
+            ni9 = ""
+            ni10 = ""
 
-        ni1 = recipe_list[index].ni1
-        ni2 = recipe_list[index].ni2
-        ni3 = recipe_list[index].ni3
-        ni4 = recipe_list[index].ni4
-        ni5 = recipe_list[index].ni5
-        ni6 = recipe_list[index].ni6
-        ni7 = ""
-        ni8 = ""
-        ni9 = ""
-        ni10 = ""
+        elif type(recipe_list[index]) == Recipe_6:
+            ing1 = recipe_list[index].ing1
+            ing2 = recipe_list[index].ing2
+            ing3 = recipe_list[index].ing3
+            ing4 = recipe_list[index].ing4
+            ing5 = recipe_list[index].ing5
+            ing6 = recipe_list[index].ing6
+            ing7 = ""
+            ing8 = ""
+            ing9 = ""
+            ing10 = ""
 
-    elif type(recipe_list[index]) == Recipe_7:
-        ing1 = recipe_list[index].ing1
-        ing2 = recipe_list[index].ing2
-        ing3 = recipe_list[index].ing3
-        ing4 = recipe_list[index].ing4
-        ing5 = recipe_list[index].ing5
-        ing6 = recipe_list[index].ing6
-        ing7 = recipe_list[index].ing7
-        ing8 = ""
-        ing9 = ""
-        ing10 = ""
+            ni1 = recipe_list[index].ni1
+            ni2 = recipe_list[index].ni2
+            ni3 = recipe_list[index].ni3
+            ni4 = recipe_list[index].ni4
+            ni5 = recipe_list[index].ni5
+            ni6 = recipe_list[index].ni6
+            ni7 = ""
+            ni8 = ""
+            ni9 = ""
+            ni10 = ""
 
-        ni1 = recipe_list[index].ni1
-        ni2 = recipe_list[index].ni2
-        ni3 = recipe_list[index].ni3
-        ni4 = recipe_list[index].ni4
-        ni5 = recipe_list[index].ni5
-        ni6 = recipe_list[index].ni6
-        ni7 = recipe_list[index].ni7
-        ni8 = ""
-        ni9 = ""
-        ni10 = ""
+        elif type(recipe_list[index]) == Recipe_7:
+            ing1 = recipe_list[index].ing1
+            ing2 = recipe_list[index].ing2
+            ing3 = recipe_list[index].ing3
+            ing4 = recipe_list[index].ing4
+            ing5 = recipe_list[index].ing5
+            ing6 = recipe_list[index].ing6
+            ing7 = recipe_list[index].ing7
+            ing8 = ""
+            ing9 = ""
+            ing10 = ""
 
-    elif type(recipe_list[index]) == Recipe_8:
-        ing1 = recipe_list[index].ing1
-        ing2 = recipe_list[index].ing2
-        ing3 = recipe_list[index].ing3
-        ing4 = recipe_list[index].ing4
-        ing5 = recipe_list[index].ing5
-        ing6 = recipe_list[index].ing6
-        ing7 = recipe_list[index].ing7
-        ing8 = recipe_list[index].ing8
-        ing9 = ""
-        ing10 = ""
+            ni1 = recipe_list[index].ni1
+            ni2 = recipe_list[index].ni2
+            ni3 = recipe_list[index].ni3
+            ni4 = recipe_list[index].ni4
+            ni5 = recipe_list[index].ni5
+            ni6 = recipe_list[index].ni6
+            ni7 = recipe_list[index].ni7
+            ni8 = ""
+            ni9 = ""
+            ni10 = ""
 
-        ni1 = recipe_list[index].ni1
-        ni2 = recipe_list[index].ni2
-        ni3 = recipe_list[index].ni3
-        ni4 = recipe_list[index].ni4
-        ni5 = recipe_list[index].ni5
-        ni6 = recipe_list[index].ni6
-        ni7 = recipe_list[index].ni7
-        ni8 = recipe_list[index].ni8
-        ni9 = ""
-        ni10 = ""
+        elif type(recipe_list[index]) == Recipe_8:
+            ing1 = recipe_list[index].ing1
+            ing2 = recipe_list[index].ing2
+            ing3 = recipe_list[index].ing3
+            ing4 = recipe_list[index].ing4
+            ing5 = recipe_list[index].ing5
+            ing6 = recipe_list[index].ing6
+            ing7 = recipe_list[index].ing7
+            ing8 = recipe_list[index].ing8
+            ing9 = ""
+            ing10 = ""
 
-    elif type(recipe_list[index]) == Recipe_9:
-        ing1 = recipe_list[index].ing1
-        ing2 = recipe_list[index].ing2
-        ing3 = recipe_list[index].ing3
-        ing4 = recipe_list[index].ing4
-        ing5 = recipe_list[index].ing5
-        ing6 = recipe_list[index].ing6
-        ing7 = recipe_list[index].ing7
-        ing8 = recipe_list[index].ing8
-        ing9 = recipe_list[index].ing9
-        ing10 = ""
+            ni1 = recipe_list[index].ni1
+            ni2 = recipe_list[index].ni2
+            ni3 = recipe_list[index].ni3
+            ni4 = recipe_list[index].ni4
+            ni5 = recipe_list[index].ni5
+            ni6 = recipe_list[index].ni6
+            ni7 = recipe_list[index].ni7
+            ni8 = recipe_list[index].ni8
+            ni9 = ""
+            ni10 = ""
 
-        ni1 = recipe_list[index].ni1
-        ni2 = recipe_list[index].ni2
-        ni3 = recipe_list[index].ni3
-        ni4 = recipe_list[index].ni4
-        ni5 = recipe_list[index].ni5
-        ni6 = recipe_list[index].ni6
-        ni7 = recipe_list[index].ni7
-        ni8 = recipe_list[index].ni8
-        ni9 = recipe_list[index].ni9
-        ni10 = ""
+        elif type(recipe_list[index]) == Recipe_9:
+            ing1 = recipe_list[index].ing1
+            ing2 = recipe_list[index].ing2
+            ing3 = recipe_list[index].ing3
+            ing4 = recipe_list[index].ing4
+            ing5 = recipe_list[index].ing5
+            ing6 = recipe_list[index].ing6
+            ing7 = recipe_list[index].ing7
+            ing8 = recipe_list[index].ing8
+            ing9 = recipe_list[index].ing9
+            ing10 = ""
 
-    elif type(recipe_list[index]) == Recipe_10:
-        ing1 = recipe_list[index].ing1
-        ing2 = recipe_list[index].ing2
-        ing3 = recipe_list[index].ing3
-        ing4 = recipe_list[index].ing4
-        ing5 = recipe_list[index].ing5
-        ing6 = recipe_list[index].ing6
-        ing7 = recipe_list[index].ing7
-        ing8 = recipe_list[index].ing8
-        ing9 = recipe_list[index].ing9
-        ing10 = recipe_list[index].ing10
+            ni1 = recipe_list[index].ni1
+            ni2 = recipe_list[index].ni2
+            ni3 = recipe_list[index].ni3
+            ni4 = recipe_list[index].ni4
+            ni5 = recipe_list[index].ni5
+            ni6 = recipe_list[index].ni6
+            ni7 = recipe_list[index].ni7
+            ni8 = recipe_list[index].ni8
+            ni9 = recipe_list[index].ni9
+            ni10 = ""
 
-        ni1 = recipe_list[index].ni1
-        ni2 = recipe_list[index].ni2
-        ni3 = recipe_list[index].ni3
-        ni4 = recipe_list[index].ni4
-        ni5 = recipe_list[index].ni5
-        ni6 = recipe_list[index].ni6
-        ni7 = recipe_list[index].ni7
-        ni8 = recipe_list[index].ni8
-        ni9 = recipe_list[index].ni9
-        ni10 = recipe_list[index].ni10
+        elif type(recipe_list[index]) == Recipe_10:
+            ing1 = recipe_list[index].ing1
+            ing2 = recipe_list[index].ing2
+            ing3 = recipe_list[index].ing3
+            ing4 = recipe_list[index].ing4
+            ing5 = recipe_list[index].ing5
+            ing6 = recipe_list[index].ing6
+            ing7 = recipe_list[index].ing7
+            ing8 = recipe_list[index].ing8
+            ing9 = recipe_list[index].ing9
+            ing10 = recipe_list[index].ing10
 
+            ni1 = recipe_list[index].ni1
+            ni2 = recipe_list[index].ni2
+            ni3 = recipe_list[index].ni3
+            ni4 = recipe_list[index].ni4
+            ni5 = recipe_list[index].ni5
+            ni6 = recipe_list[index].ni6
+            ni7 = recipe_list[index].ni7
+            ni8 = recipe_list[index].ni8
+            ni9 = recipe_list[index].ni9
+            ni10 = recipe_list[index].ni10
+
+    except:
+        print("Error")
 
     return render_template("recipe_details.html", recipe_name = recipe_name, ing1 = ing1, ing2 = ing2, ing3 = ing3, ing4 = ing4, ing5 = ing5, ing6 = ing6, ing7 = ing7, ing8 = ing8, ing9 = ing9, ing10 = ing10, ni1 = ni1, ni2 = ni2, ni3 = ni3, ni4 = ni4, ni5 = ni5, ni6 = ni6, ni7 = ni7, ni8 = ni8, ni9 = ni9, ni10 = ni10)
 
 @app.route("/recipe_delete/<recipe>")
 def recipe_delete(recipe):
-    print(recipe)
-    print(type(recipe))
-
     temp_list = list(map(str, recipe_list))
     try:
         if recipe in temp_list:
             index = temp_list.index(recipe)
             recipe_list.pop(index)
-            print(recipe_list)
     except:
-        print("Fuck Me")
+        print("Error")
 
     sorted_ingredients = dict(sorted(ingredients.items()))
 
@@ -798,7 +600,6 @@ def recipe_delete(recipe):
 
 @app.route("/recipe_create", methods=['POST', 'GET'])
 def recipe_create():
-    
     options = ("Recipe 1 Ingredient","Recipe 2 Ingredients","Recipe 3 Ingredients","Recipe 4 Ingredients","Recipe 5 Ingredients","Recipe 6 Ingredients","Recipe 7 Ingredients","Recipe 8 Ingredients","Recipe 9 Ingredients","Recipe 10 Ingredients")
     selected = None
     recipe_name = None
@@ -823,90 +624,74 @@ def recipe_create():
     ing10_name = None
     ing10_amount = None
     
-    if request.method == "POST":
-        selected = request.form.get("selector")
-        
-        recipe_name = request.form["recipe_name"]
-        ing1_name = request.form["ing1_name"]
-        ing1_amount = request.form["ing1_amount"]
-        ing2_name = request.form["ing2_name"]
-        ing2_amount = request.form["ing2_amount"]
-        ing3_name = request.form["ing3_name"]
-        ing3_amount = request.form["ing3_amount"]
-        ing4_name = request.form["ing4_name"]
-        ing4_amount = request.form["ing4_amount"]
-        ing5_name = request.form["ing5_name"]
-        ing5_amount = request.form["ing5_amount"]
-        ing6_name = request.form["ing6_name"]
-        ing6_amount = request.form["ing6_amount"]
-        ing7_name = request.form["ing7_name"]
-        ing7_amount = request.form["ing7_amount"]
-        ing8_name = request.form["ing8_name"]
-        ing8_amount = request.form["ing8_amount"]
-        ing9_name = request.form["ing9_name"]
-        ing9_amount = request.form["ing9_amount"]
-        ing10_name = request.form["ing10_name"]
-        ing10_amount = request.form["ing10_amount"]
-
-        if selected == "Recipe 1 Ingredient":
-            create_new_Recipe_1(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount))
-            print(recipe_list)
-            print(selected)
-            print(type(selected))
-
-        elif selected == "Recipe 2 Ingredients":
-            create_new_Recipe_2(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount))
-            print(recipe_list)
-        
-        elif selected == "Recipe 3 Ingredients":
-            create_new_Recipe_3(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount))
+    try:
+        if request.method == "POST":
+            selected = request.form.get("selector")
             
-            print(recipe_list)
+            recipe_name = request.form["recipe_name"]
+            ing1_name = request.form["ing1_name"]
+            ing1_amount = request.form["ing1_amount"]
+            ing2_name = request.form["ing2_name"]
+            ing2_amount = request.form["ing2_amount"]
+            ing3_name = request.form["ing3_name"]
+            ing3_amount = request.form["ing3_amount"]
+            ing4_name = request.form["ing4_name"]
+            ing4_amount = request.form["ing4_amount"]
+            ing5_name = request.form["ing5_name"]
+            ing5_amount = request.form["ing5_amount"]
+            ing6_name = request.form["ing6_name"]
+            ing6_amount = request.form["ing6_amount"]
+            ing7_name = request.form["ing7_name"]
+            ing7_amount = request.form["ing7_amount"]
+            ing8_name = request.form["ing8_name"]
+            ing8_amount = request.form["ing8_amount"]
+            ing9_name = request.form["ing9_name"]
+            ing9_amount = request.form["ing9_amount"]
+            ing10_name = request.form["ing10_name"]
+            ing10_amount = request.form["ing10_amount"]
 
-        elif selected == "Recipe 4 Ingredients":
-            create_new_Recipe_4(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount))
-            
-            print(recipe_list)
+            if selected == "Recipe 1 Ingredient":
+                create_new_Recipe_1(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount))
 
-        elif selected == "Recipe 5 Ingredients":
-            create_new_Recipe_5(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount))
+            elif selected == "Recipe 2 Ingredients":
+                create_new_Recipe_2(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount))
             
-            print(recipe_list)
+            elif selected == "Recipe 3 Ingredients":
+                create_new_Recipe_3(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount))
 
-        elif selected == "Recipe 6 Ingredients":
-            create_new_Recipe_6(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount), ing6=ing6_name, ni6=int(ing6_amount))
-            
-            print(recipe_list)
+            elif selected == "Recipe 4 Ingredients":
+                create_new_Recipe_4(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount))
 
-        elif selected == "Recipe 7 Ingredients":
-            create_new_Recipe_7(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount), ing6=ing6_name, ni6=int(ing6_amount), ing7=ing7_name, ni7=int(ing7_amount))
-            
-            print(recipe_list)
+            elif selected == "Recipe 5 Ingredients":
+                create_new_Recipe_5(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount))
 
-        elif selected == "Recipe 8 Ingredients":
-            create_new_Recipe_8(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount), ing6=ing6_name, ni6=int(ing6_amount), ing7=ing7_name, ni7=int(ing7_amount), ing8=ing8_name, ni8=int(ing8_amount))
-            
-            print(recipe_list)
+            elif selected == "Recipe 6 Ingredients":
+                create_new_Recipe_6(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount), ing6=ing6_name, ni6=int(ing6_amount))
 
-        elif selected == "Recipe 9 Ingredients":
-            create_new_Recipe_9(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount), ing6=ing6_name, ni6=int(ing6_amount), ing7=ing7_name, ni7=int(ing7_amount), ing8=ing8_name, ni8=int(ing8_amount), ing9=ing9_name, ni9=int(ing9_amount))
+            elif selected == "Recipe 7 Ingredients":
+                create_new_Recipe_7(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount), ing6=ing6_name, ni6=int(ing6_amount), ing7=ing7_name, ni7=int(ing7_amount))
+
+            elif selected == "Recipe 8 Ingredients":
+                create_new_Recipe_8(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount), ing6=ing6_name, ni6=int(ing6_amount), ing7=ing7_name, ni7=int(ing7_amount), ing8=ing8_name, ni8=int(ing8_amount))
+
+            elif selected == "Recipe 9 Ingredients":
+                create_new_Recipe_9(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount), ing6=ing6_name, ni6=int(ing6_amount), ing7=ing7_name, ni7=int(ing7_amount), ing8=ing8_name, ni8=int(ing8_amount), ing9=ing9_name, ni9=int(ing9_amount))
             
-            print(recipe_list)
-        
-        elif selected == "Recipe 10 Ingredients":
-            create_new_Recipe_10(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount), ing6=ing6_name, ni6=int(ing6_amount), ing7=ing7_name, ni7=int(ing7_amount), ing8=ing8_name, ni8=int(ing8_amount), ing9=ing9_name, ni9=int(ing9_amount), ing10=ing10_name, ni10=int(ing10_amount))
-            
-            print(recipe_list)
-        else:
-            pass
+            elif selected == "Recipe 10 Ingredients":
+                create_new_Recipe_10(name=recipe_name, ing1=ing1_name, ni1=int(ing1_amount), ing2=ing2_name, ni2=int(ing2_amount), ing3=ing3_name, ni3=int(ing3_amount), ing4=ing4_name, ni4=int(ing4_amount), ing5=ing5_name, ni5=int(ing5_amount), ing6=ing6_name, ni6=int(ing6_amount), ing7=ing7_name, ni7=int(ing7_amount), ing8=ing8_name, ni8=int(ing8_amount), ing9=ing9_name, ni9=int(ing9_amount), ing10=ing10_name, ni10=int(ing10_amount))
+            else:
+                pass
+    except:
+        print("Error")
 
     return render_template("recipe_create.html", options = options, selected= selected, recipe_name = recipe_name, ing1_name=ing1_name, ing1_amount=ing1_amount, ing2_name=ing2_name, ing2_amount=ing2_amount, ing3_name=ing3_name, ing3_amount=ing3_amount, ing4_name=ing4_name, ing4_amount=ing4_amount, ing5_name=ing5_name, ing5_amount=ing5_amount, ing6_name=ing6_name, ing6_amount=ing6_amount, ing7_name=ing7_name, ing7_amount=ing7_amount, ing8_name=ing8_name, ing8_amount=ing8_amount, ing9_name=ing9_name, ing9_amount=ing9_amount, ing10_name=ing10_name, ing10_amount=ing10_amount)
 
 @app.route("/check_available")
 def check_available():
-    print(available_recipes)
-    check_available_recipes()
-    print(available_recipes)
+    try:
+        check_available_recipes()
+    except:
+        print("Error")
 
     sorted_ingredients = dict(sorted(ingredients.items()))
 
@@ -914,7 +699,11 @@ def check_available():
 
 @app.route("/your_meal")
 def your_meal():
-    random_meal()
+    try:
+        random_meal()
+    except:
+        print("Error")
+    
     sorted_ingredients = dict(sorted(ingredients.items()))
 
     return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, available_recipes = available_recipes, Your_meal = Your_meal)
@@ -923,88 +712,89 @@ def your_meal():
 def accept_choice_yes():
     random_meal_list = []
     random_meal_list.append(Your_meal)
-    print(random_meal_list)
+    try:
+        for rcp in random_meal_list:
+            print(type(rcp))
+            if type(rcp) == Recipe_1:
+                ingredients[rcp.ing1] -= rcp.ni1
+            elif type(rcp) == Recipe_2:
+                ingredients[rcp.ing1] -= rcp.ni1
+                ingredients[rcp.ing2] -= rcp.ni2
+            elif type(rcp) == Recipe_3:
+                ingredients[rcp.ing1] -= rcp.ni1
+                ingredients[rcp.ing2] -= rcp.ni2
+                ingredients[rcp.ing3] -= rcp.ni3
+            elif type(rcp) == Recipe_4:
+                ingredients[rcp.ing1] -= rcp.ni1
+                ingredients[rcp.ing2] -= rcp.ni2
+                ingredients[rcp.ing3] -= rcp.ni3
+                ingredients[rcp.ing4] -= rcp.ni4
+            elif type(rcp) == Recipe_5:
+                ingredients[rcp.ing1] -= rcp.ni1
+                ingredients[rcp.ing2] -= rcp.ni2
+                ingredients[rcp.ing3] -= rcp.ni3
+                ingredients[rcp.ing4] -= rcp.ni4
+                ingredients[rcp.ing5] -= rcp.ni5
+            elif type(rcp) == Recipe_6:
+                ingredients[rcp.ing1] -= rcp.ni1
+                ingredients[rcp.ing2] -= rcp.ni2
+                ingredients[rcp.ing3] -= rcp.ni3
+                ingredients[rcp.ing4] -= rcp.ni4
+                ingredients[rcp.ing5] -= rcp.ni5
+                ingredients[rcp.ing6] -= rcp.ni6
+            elif type(rcp) == Recipe_7:
+                ingredients[rcp.ing1] -= rcp.ni1
+                ingredients[rcp.ing2] -= rcp.ni2
+                ingredients[rcp.ing3] -= rcp.ni3
+                ingredients[rcp.ing4] -= rcp.ni4
+                ingredients[rcp.ing5] -= rcp.ni5
+                ingredients[rcp.ing6] -= rcp.ni6
+                ingredients[rcp.ing7] -= rcp.ni7
+            elif type(rcp) == Recipe_8:
+                ingredients[rcp.ing1] -= rcp.ni1
+                ingredients[rcp.ing2] -= rcp.ni2
+                ingredients[rcp.ing3] -= rcp.ni3
+                ingredients[rcp.ing4] -= rcp.ni4
+                ingredients[rcp.ing5] -= rcp.ni5
+                ingredients[rcp.ing6] -= rcp.ni6
+                ingredients[rcp.ing7] -= rcp.ni7
+                ingredients[rcp.ing8] -= rcp.ni8
+            elif type(rcp) == Recipe_9:
+                ingredients[rcp.ing1] -= rcp.ni1
+                ingredients[rcp.ing2] -= rcp.ni2
+                ingredients[rcp.ing3] -= rcp.ni3
+                ingredients[rcp.ing4] -= rcp.ni4
+                ingredients[rcp.ing5] -= rcp.ni5
+                ingredients[rcp.ing6] -= rcp.ni6
+                ingredients[rcp.ing7] -= rcp.ni7
+                ingredients[rcp.ing8] -= rcp.ni8
+                ingredients[rcp.ing9] -= rcp.ni9
+            elif type(rcp) == Recipe_10:
+                ingredients[rcp.ing1] -= rcp.ni1
+                ingredients[rcp.ing2] -= rcp.ni2
+                ingredients[rcp.ing3] -= rcp.ni3
+                ingredients[rcp.ing4] -= rcp.ni4
+                ingredients[rcp.ing5] -= rcp.ni5
+                ingredients[rcp.ing6] -= rcp.ni6
+                ingredients[rcp.ing7] -= rcp.ni7
+                ingredients[rcp.ing8] -= rcp.ni8
+                ingredients[rcp.ing9] -= rcp.ni9
+                ingredients[rcp.ing10] -= rcp.ni10
+    except:
+        print("Error")
 
-    for rcp in random_meal_list:
-        print(type(rcp))
-        if type(rcp) == Recipe_1:
-            ingredients[rcp.ing1] -= rcp.ni1
-        elif type(rcp) == Recipe_2:
-            ingredients[rcp.ing1] -= rcp.ni1
-            ingredients[rcp.ing2] -= rcp.ni2
-        elif type(rcp) == Recipe_3:
-            ingredients[rcp.ing1] -= rcp.ni1
-            ingredients[rcp.ing2] -= rcp.ni2
-            ingredients[rcp.ing3] -= rcp.ni3
-        elif type(rcp) == Recipe_4:
-            ingredients[rcp.ing1] -= rcp.ni1
-            ingredients[rcp.ing2] -= rcp.ni2
-            ingredients[rcp.ing3] -= rcp.ni3
-            ingredients[rcp.ing4] -= rcp.ni4
-        elif type(rcp) == Recipe_5:
-            ingredients[rcp.ing1] -= rcp.ni1
-            ingredients[rcp.ing2] -= rcp.ni2
-            ingredients[rcp.ing3] -= rcp.ni3
-            ingredients[rcp.ing4] -= rcp.ni4
-            ingredients[rcp.ing5] -= rcp.ni5
-        elif type(rcp) == Recipe_6:
-            ingredients[rcp.ing1] -= rcp.ni1
-            ingredients[rcp.ing2] -= rcp.ni2
-            ingredients[rcp.ing3] -= rcp.ni3
-            ingredients[rcp.ing4] -= rcp.ni4
-            ingredients[rcp.ing5] -= rcp.ni5
-            ingredients[rcp.ing6] -= rcp.ni6
-        elif type(rcp) == Recipe_7:
-            ingredients[rcp.ing1] -= rcp.ni1
-            ingredients[rcp.ing2] -= rcp.ni2
-            ingredients[rcp.ing3] -= rcp.ni3
-            ingredients[rcp.ing4] -= rcp.ni4
-            ingredients[rcp.ing5] -= rcp.ni5
-            ingredients[rcp.ing6] -= rcp.ni6
-            ingredients[rcp.ing7] -= rcp.ni7
-        elif type(rcp) == Recipe_8:
-            ingredients[rcp.ing1] -= rcp.ni1
-            ingredients[rcp.ing2] -= rcp.ni2
-            ingredients[rcp.ing3] -= rcp.ni3
-            ingredients[rcp.ing4] -= rcp.ni4
-            ingredients[rcp.ing5] -= rcp.ni5
-            ingredients[rcp.ing6] -= rcp.ni6
-            ingredients[rcp.ing7] -= rcp.ni7
-            ingredients[rcp.ing8] -= rcp.ni8
-        elif type(rcp) == Recipe_9:
-            ingredients[rcp.ing1] -= rcp.ni1
-            ingredients[rcp.ing2] -= rcp.ni2
-            ingredients[rcp.ing3] -= rcp.ni3
-            ingredients[rcp.ing4] -= rcp.ni4
-            ingredients[rcp.ing5] -= rcp.ni5
-            ingredients[rcp.ing6] -= rcp.ni6
-            ingredients[rcp.ing7] -= rcp.ni7
-            ingredients[rcp.ing8] -= rcp.ni8
-            ingredients[rcp.ing9] -= rcp.ni9
-        elif type(rcp) == Recipe_10:
-            ingredients[rcp.ing1] -= rcp.ni1
-            ingredients[rcp.ing2] -= rcp.ni2
-            ingredients[rcp.ing3] -= rcp.ni3
-            ingredients[rcp.ing4] -= rcp.ni4
-            ingredients[rcp.ing5] -= rcp.ni5
-            ingredients[rcp.ing6] -= rcp.ni6
-            ingredients[rcp.ing7] -= rcp.ni7
-            ingredients[rcp.ing8] -= rcp.ni8
-            ingredients[rcp.ing9] -= rcp.ni9
-            ingredients[rcp.ing10] -= rcp.ni10
     
-    print("Current ingredients: ", ingredients)
     sorted_ingredients = dict(sorted(ingredients.items()))
     check_available_recipes()
-    print(sorted_ingredients)
 
     return render_template("index.html", sorted_ingredients = sorted_ingredients, recipe_list = recipe_list, available_recipes = available_recipes, Your_meal = Your_meal)
 
 @app.route("/accept_choice_no", methods=["GET", "POST"])
 def accept_choice_no():
-    random_meal()
-
-    print(Your_meal)
+    try:
+        random_meal()
+    except:
+        print("Error")
 
     sorted_ingredients = dict(sorted(ingredients.items()))
 
