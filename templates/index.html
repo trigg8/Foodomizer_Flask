@@ -59,11 +59,11 @@
             {% for recipe in recipe_list %}
                 <tr>
                     <td class="recipes__table__recipe">
-                        <a href="/recipe_details/{{recipe}}">
+                        <a href="/recipe_details/{{recipe}}" class="recipes__table__recipe__button">
                             {{ recipe }}
                         </a>
                     </td>
-                    <td class="recipes__table__recipe">
+                    <td class="recipes__table__delete">
                         <a href="/recipe_delete/{{recipe}}" class="recipe__delete__button">
                             X
                         </a>
