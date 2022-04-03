@@ -5,26 +5,59 @@
 {% endblock %} 
 
 {% block body %}
-<h1>Recipe Details</h1>
-<h2>{{recipe_name}}</h2>
-<h3>{{ing1}}</h3>
-<h4>{{ni1}}</h4>
-<h3>{{ing2}}</h3>
-<h4>{{ni2}}</h4>
-<h3>{{ing3}}</h3>
-<h4>{{ni3}}</h4>
-<h3>{{ing4}}</h3>
-<h4>{{ni4}}</h4>
-<h3>{{ing5}}</h3>
-<h4>{{ni5}}</h4>
-<h3>{{ing6}}</h3>
-<h4>{{ni6}}</h4>
-<h3>{{ing7}}</h3>
-<h4>{{ni7}}</h4>
-<h3>{{ing8}}</h3>
-<h4>{{ni8}}</h4>
-<h3>{{ing9}}</h3>
-<h4>{{ni9}}</h4>
-<h3>{{ing10}}</h3>
-<h4>{{ni10}}</h4>
+<h1 class="detail__title">Recipe Details</h1>
+<div class="detail__container">
+    <h2 class="detail__recipe__name">{{recipe_name}}</h2>
+    <h2 class="detail__table__title">Ingredients Needed</h2>
+        <table class="detail__table">
+            <thead class="detail__table__header">
+                <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                </tr>
+            </thead> <!-- End of detail__table__header-->
+            <tbody class="detail__table__body">
+                <tr>
+                    <td class="detail_ingredient_key" name="detail_ingredient_key"> {{ ing1 }}</td>
+                    <td class="detail_ingredient_value" name="detail_ingredient_value"> {{ ni1 }}</td>
+                </tr>    
+                <tr>
+                    <td class="detail_ingredient_key" name="detail_ingredient_key"> {{ ing2 }}</td>
+                    <td class="detail_ingredient_value" name="detail_ingredient_value"> {{ ni2 }}</td>
+                </tr>
+                <tr>
+                    <td class="detail_ingredient_key" name="detail_ingredient_key"> {{ ing3 }}</td>
+                    <td class="detail_ingredient_value" name="detail_ingredient_value"> {{ ni3 }}</td>
+                </tr>  
+                <tr>
+                    <td class="detail_ingredient_key" name="detail_ingredient_key"> {{ ing4 }}</td>
+                    <td class="detail_ingredient_value" name="detail_ingredient_value"> {{ ni4 }}</td>
+                </tr>  
+                <tr>
+                    <td class="detail_ingredient_key" name="detail_ingredient_key"> {{ ing5 }}</td>
+                    <td class="detail_ingredient_value" name="detail_ingredient_value"> {{ ni5 }}</td>
+                </tr>  
+                <tr>
+                    <td class="detail_ingredient_key" name="detail_ingredient_key"> {{ ing6 }}</td>
+                    <td class="detail_ingredient_value" name="detail_ingredient_value"> {{ ni6 }}</td>
+                </tr>  
+                <tr>
+                    <td class="detail_ingredient_key" name="detail_ingredient_key"> {{ ing7 }}</td>
+                    <td class="detail_ingredient_value" name="detail_ingredient_value"> {{ ni7 }}</td>
+                </tr>  
+                <tr>
+                    <td class="detail_ingredient_key" name="detail_ingredient_key"> {{ ing8 }}</td>
+                    <td class="detail_ingredient_value" name="detail_ingredient_value"> {{ ni8 }}</td>
+                </tr>  
+                <tr>
+                    <td class="detail_ingredient_key" name="detail_ingredient_key"> {{ ing9 }}</td>
+                    <td class="detail_ingredient_value" name="detail_ingredient_value"> {{ ni9 }}</td>
+                </tr>  
+                <tr>
+                    <td class="detail_ingredient_key" name="detail_ingredient_key"> {{ ing10 }}</td>
+                    <td class="detail_ingredient_value" name="detail_ingredient_value"> {{ ni10 }}</td>
+                </tr>  
+            </tbody> <!-- End of detail__table__body-->
+        </table> <!-- End of detail__table-->
+</div> <!-- End of detail__container-->
 {% endblock %}

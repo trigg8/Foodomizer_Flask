@@ -35,9 +35,10 @@
 
     /* Font-size */
     --fs-h1: 3rem;
-    --fs-h2: 1.5rem;
-    --fs-h3: 1.25rem;
-    --fs-h4: 1.05rem;
+    --fs-h2: 2rem;
+    --fs-h3: 1.5rem;
+    --fs-h4: 1.25rem;
+    --fs-h5: 1.05rem;
     --fs-body: 1rem;
 }
 
@@ -71,7 +72,7 @@ body {
     border: 2px solid black;
     border-radius: 1em;
     text-align: center;
-    font-size: var(--fs-h2);
+    font-size: var(--fs-h3);
 }
 
 .table {
@@ -91,7 +92,7 @@ body {
 .table__header {
     background-color: green;
     text-align: center;
-    font-size: var(--fs-h4);
+    font-size: var(--fs-h5);
 }
 
 .table__header tr th {
@@ -257,3 +258,79 @@ body {
     width: 2em;
     color: red;
 }
+
+/* Recipe Details Modal */
+
+.detail__title {
+    color: var(--clr-accent);
+    text-align: center;
+    font-size: var(--fs-h1);
+    padding: 0em;
+    margin: 0.5rem;
+}
+
+.detail__container {
+    background-color: var(--clr-accent);
+    border-radius: 1em;
+    width: 50%;
+    height: 80vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    padding: 2em;
+}
+
+.detail__recipe__name {
+    background-color: red;
+    font-size: var(--fs-h2);
+}
+
+.detail__table__title {
+    background-color: blanchedalmond;
+    font-size: var(--fs-h3);
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.detail__table {
+    display: block;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 80%;
+    min-height: 80%;
+}
+
+.detail__table__header {
+    background-color: green;
+    text-align: center;
+    font-size: var(--fs-h5);
+}
+
+.detail__table__header tr th {
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    padding-top: 0.1em;
+}
+
+.detail__table__body {
+    background-color: azure;
+    text-align: center;
+    font-size: var(--fs-body);
+}
+
+.detail_ingredient_key {
+    width: 27.5em;
+    height: 1.6em;
+}
+
+.detail_ingredient_value {
+    width: 7.7em;
+}
+
+/* Create Recipe Modal */
