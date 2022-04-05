@@ -359,9 +359,6 @@ body {
 }
 
 .detail__recipe__name {
-    background-color: var(--clr-light);
-    border-radius: 1em;
-    border: 0.1em solid var(--clr-dark-grey);
     font-size: var(--fs-h2);
     text-align: center;
 }
