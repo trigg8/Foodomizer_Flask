@@ -256,7 +256,7 @@ def create_new_Recipe_10(name,ing1,ni1,ing2,ni2,ing3,ni3,ing4,ni4,ing5,ni5,ing6,
 
 # Functions
 def check_available_recipes(): 
-    global available_recipes
+    #global available_recipes
     available_recipes = []
     for rcp in recipe_list: 
         try:
@@ -305,7 +305,7 @@ def check_available_recipes():
 
 
 def random_meal():
-    global Your_meal
+   # global Your_meal
     Your_meal = random.choice(available_recipes)
     return Your_meal
 
